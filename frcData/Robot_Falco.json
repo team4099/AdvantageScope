@@ -1,7 +1,7 @@
 {
   "sourceUrl": "https://cad.onshape.com/documents/6b2c6faaaaa4880c7ea8ef34/w/c2ad5add28c351427b5e3299/e/05fc87f788c83bf818ff2923",
   "rotations": [{"axis": "x", "degrees": 90}, { "axis": "z", "degrees": 90}],
-  "position": [0, 0, 0],
+  "position": [0, 0, 0.500360],
   "cameras": [
     {
       "name": "Front Camera",
@@ -91,9 +91,13 @@
         {
           "axis": "z",
           "degrees": 90
+        },
+	{
+          "axis": "y",
+          "degrees": 0
         }
       ],
-      "zeroedPosition": [0.305, 0, -0.37]
+      "zeroedPosition": [0.0, 0.0, 0.0]
     },{
       "zeroedRotations": [
         {
@@ -105,7 +109,20 @@
           "degrees": 90
         }
       ],
-      "zeroedPosition": [0.305, 0, -0.37]
+      "zeroedPosition": [0.0, 0.0, 0.0]
+    },
+    {
+      "zeroedRotations": [
+        {
+          "axis": "x",
+          "degrees": 90
+        },
+        {
+          "axis": "z",
+          "degrees": 90
+        }
+      ],
+      "zeroedPosition": [0.0, 0.0, 0.0]
     }
   ]
 }
