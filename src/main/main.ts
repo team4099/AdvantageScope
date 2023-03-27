@@ -398,7 +398,25 @@ function handleHubMessage(window: BrowserWindow, message: NamedMessage) {
       break;
 
     case "prompt-export":
-      createExportWindow(window, message.data);
+      if (message.data.incompleteWarning) {
+        dialog
+          .showMessageBox(window, {
+            type: "info",
+            title: "Warning",
+            message: "Incomplete data for export",
+            detail:
+              'Some fields will not be available in the exported data. To save all fields from the server, the "Logging" live mode must be selected. Check the AdvantageScope documentation for details.',
+            buttons: ["Continue", "Cancel"],
+            icon: WINDOW_ICON
+          })
+          .then((value) => {
+            if (value.response == 0) {
+              createExportWindow(window, message.data.path);
+            }
+          });
+      } else {
+        createExportWindow(window, message.data.path);
+      }
       break;
 
     case "write-export":
@@ -1028,8 +1046,8 @@ function setupMenu() {
             if (window == null || !hubWindows.includes(window)) return;
             dialog
               .showOpenDialog(window, {
-                title: "Select a layout file to import",
-                properties: ["openFile"],
+                title: "Select one or more layout files to import",
+                properties: ["openFile", "multiSelections"],
                 filters: [{ name: "JSON files", extensions: ["json"] }]
               })
               .then((files) => {
@@ -1046,6 +1064,21 @@ function setupMenu() {
                       icon: WINDOW_ICON
                     });
                     return;
+                  }
+
+                  // Merge additional layout files
+                  if (files.filePaths.length > 1) {
+                    for (const file of files.filePaths.slice(1)) {
+                      let additionalLayout = jsonfile.readFileSync(file);
+                      if (
+                        "version" in additionalLayout &&
+                        "layout" in additionalLayout &&
+                        Array.isArray(additionalLayout.layout) &&
+                        additionalLayout.version == data.version
+                      ) {
+                        data.layout = data.layout.concat(additionalLayout.layout);
+                      }
+                    }
                   }
 
                   // Check version compatability
@@ -1648,7 +1681,7 @@ function openPreferences(parentWindow: Electron.BrowserWindow) {
   }
 
   const width = 400;
-  const height = process.platform == "win32" ? 276 : 216; // "useContentSize" is broken on Windows when not resizable
+  const height = process.platform == "win32" ? 303 : 243; // "useContentSize" is broken on Windows when not resizable
   prefsWindow = new BrowserWindow({
     width: width,
     height: height,
