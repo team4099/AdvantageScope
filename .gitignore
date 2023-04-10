@@ -1,7 +1,6 @@
 ### Node/Electron ###
 node_modules
 dist
-bundles
 ffmpeg
 
 ### Linux ###
@@ -9,6 +8,7 @@ ffmpeg
 
 ### Yarn ###
 yarn.lock
+.yarn/
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
