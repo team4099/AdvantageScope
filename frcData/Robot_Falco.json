@@ -2,66 +2,36 @@
   "sourceUrl": "https://cad.onshape.com/documents/6b2c6faaaaa4880c7ea8ef34/w/c2ad5add28c351427b5e3299/e/05fc87f788c83bf818ff2923",
   "rotations": [{"axis": "x", "degrees": 90}, { "axis": "z", "degrees": 90}],
   "position": [0, 0, 0.500360],
-  "cameras": [
+"cameras": [
     {
       "name": "Front Camera",
-      "rotations": [
-        {
-          "axis": "y",
-          "degrees": 20
-        }
-      ],
-      "position": [0.2, 0, 0.8],
-      "resolution": [960, 720],
-      "fov": 90
+      "rotations": [],
+      "position": [0.266954, 0.1857375, 0.744982],
+      "resolution": [1600, 1200],
+      "fov": 75
     },
-    {
-      "name": "Back Camera",
-      "rotations": [
-        {
-          "axis": "y",
-          "degrees": 20
-        },
-        {
-          "axis": "z",
-          "degrees": 180
-        }
-      ],
-      "position": [-0.2, 0, 0.8],
-      "resolution": [960, 720],
-      "fov": 90
-    },
-    {
-      "name": "Left Camera",
-      "rotations": [
-        {
-          "axis": "y",
-          "degrees": 20
-        },
-        {
-          "axis": "z",
-          "degrees": 90
-        }
-      ],
-      "position": [0, 0.2, 0.8],
-      "resolution": [960, 720],
-      "fov": 90
-    },
-    {
+{
       "name": "Right Camera",
-      "rotations": [
-        {
-          "axis": "y",
-          "degrees": 20
-        },
-        {
-          "axis": "z",
-          "degrees": -90
-        }
-      ],
-      "position": [0, -0.2, 0.8],
-      "resolution": [960, 720],
-      "fov": 90
+      "rotations": [{ "axis": "z", "degrees": -40 }],
+      "position": [-0.166624, -0.3249422, 0.4175252],
+      "resolution": [1600, 1200],
+      "fov": 75
+    },
+{
+      "name": "Left Camera",
+      "rotations": [{ "axis": "z", "degrees": 40 }],
+      "position": [-0.166624, 0.3249422, 0.4175252],
+      "resolution": [1600, 1200],
+      "fov": 75
+    },
+{
+      "name": "Limelight",
+      "rotations": [{ "axis": "x", "degrees": 8.159 }, { "axis": "y", "degrees": -28.39
+ }, { "axis": "z", "degrees": -14.1254
+ }],
+      "position": [0.02905252, 0.26407364, 0.32838136],
+      "resolution": [320, 240],
+      "fov": 59.4
     }
   ],
   "components": [
