@@ -994,6 +994,17 @@ table.console-table {
   margin-bottom: 6px;
 }
 
+div.console-table-search {
+  background: #ff0000;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 table.console-table th {
   position: sticky;
   top: 0px;
