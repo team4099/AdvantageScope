@@ -25,6 +25,7 @@ var TabType;
     TabType[TabType["Mechanism"] = 10] = "Mechanism";
     TabType[TabType["Points"] = 11] = "Points";
     TabType[TabType["Metadata"] = 12] = "Metadata";
+    TabType[TabType["MotorChecker"] = 13] = "MotorChecker";
 })(TabType || (TabType = {}));
 [
     TabType.Odometry,
@@ -66,6 +67,8 @@ function getDefaultTabTitle(type) {
             return "Points";
         case TabType.Metadata:
             return "Metadata";
+        case TabType.MotorChecker:
+            return "MotorChecker";
         default:
             return "";
     }
@@ -98,6 +101,8 @@ function getTabIcon(type) {
             return "🔵";
         case TabType.Metadata:
             return "🔍";
+        case TabType.MotorChecker:
+            return "🏍️";
         default:
             return "";
     }
@@ -142,10 +147,10 @@ const WINDOW_ICON = (() => {
 })();
 const DEFAULT_PREFS = {
     theme: process.platform == "linux" ? "light" : "system",
-    rioAddress: "10.40.99.2",
+    rioAddress: "10.63.28.2",
     rioPath: "/media/sda1/",
     liveMode: "nt4",
-    liveSubscribeMode: "logging",
+    liveSubscribeMode: "low-bandwidth",
     rlogPort: 5800,
     threeDimensionMode: "quality"
 };
@@ -2244,24 +2249,35 @@ electron.app.whenReady().then(() => {
     else {
         let oldPrefs = jsonfile.readFileSync(PREFS_FILENAME);
         let prefs = DEFAULT_PREFS;
-        if ("theme" in oldPrefs && (oldPrefs.theme == "light" || oldPrefs.theme == "dark" || oldPrefs.theme == "system")) {
+        if ("theme" in oldPrefs &&
+            (oldPrefs.theme === "light" || oldPrefs.theme === "dark" || oldPrefs.theme === "system")) {
             prefs.theme = oldPrefs.theme;
         }
-        if ("rioAddress" in oldPrefs && typeof oldPrefs.rioAddress == "string") {
+        if ("rioAddress" in oldPrefs && typeof oldPrefs.rioAddress === "string") {
             prefs.rioAddress = oldPrefs.rioAddress;
         }
-        if ("address" in oldPrefs && typeof oldPrefs.address == "string") {
+        if ("address" in oldPrefs && typeof oldPrefs.address === "string") {
             prefs.rioAddress = oldPrefs.address;
         }
-        if ("rioPath" in oldPrefs && typeof oldPrefs.rioPath == "string") {
+        if ("rioPath" in oldPrefs && typeof oldPrefs.rioPath === "string") {
             prefs.rioPath = oldPrefs.rioPath;
         }
         if ("liveMode" in oldPrefs &&
-            (oldPrefs.liveMode == "nt4" || oldPrefs.liveMode == "nt4-akit" || oldPrefs.liveMode == "rlog")) {
+            (oldPrefs.liveMode === "nt4" || oldPrefs.liveMode === "nt4-akit" || oldPrefs.liveMode === "rlog")) {
             prefs.liveMode = oldPrefs.liveMode;
+        }
+        if ("liveSubscribeMode" in oldPrefs &&
+            (oldPrefs.liveSubscribeMode === "low-bandwidth" || oldPrefs.liveSubscribeMode === "logging")) {
+            prefs.liveSubscribeMode = oldPrefs.liveSubscribeMode;
         }
         if ("rlogPort" in oldPrefs && typeof oldPrefs.rlogPort == "number") {
             prefs.rlogPort = oldPrefs.rlogPort;
+        }
+        if ("threeDimensionMode" in oldPrefs &&
+            (oldPrefs.threeDimensionMode === "quality" ||
+                oldPrefs.threeDimensionMode === "efficiency" ||
+                oldPrefs.threeDimensionMode === "auto")) {
+            prefs.threeDimensionMode = oldPrefs.threeDimensionMode;
         }
         jsonfile.writeFileSync(PREFS_FILENAME, prefs);
         electron.nativeTheme.themeSource = prefs.theme;

@@ -3045,9 +3045,9 @@ function throwNoFraction(x) {
   throw new Error("Cannot convert value ".concat(x, " into a Fraction, no class 'Fraction' provided."));
 }
 
-var name$4H = 'ResultSet';
+var name$4I = 'ResultSet';
 var dependencies$4H = [];
-var createResultSet = factory(name$4H, dependencies$4H, () => {
+var createResultSet = factory(name$4I, dependencies$4H, () => {
   function ResultSet(entries) {
     if (!(this instanceof ResultSet)) {
       throw new SyntaxError('Constructor must be called with the new operator');
@@ -5346,9 +5346,9 @@ var Decimal = P$1.constructor = clone$1(DEFAULTS);
 LN10$1 = new Decimal(LN10$1);
 PI = new Decimal(PI);
 
-var name$4G = 'BigNumber';
+var name$4H = 'BigNumber';
 var dependencies$4G = ['?on', 'config'];
-var createBigNumberClass = factory(name$4G, dependencies$4G, _ref => {
+var createBigNumberClass = factory(name$4H, dependencies$4G, _ref => {
   var {
     on,
     config
@@ -6107,9 +6107,9 @@ var complex$1 = {
 } (complex$1));
 var Complex$1 = getDefaultExportFromCjs(complexExports);
 
-var name$4F = 'Complex';
+var name$4G = 'Complex';
 var dependencies$4F = [];
-var createComplexClass = factory(name$4F, dependencies$4F, () => {
+var createComplexClass = factory(name$4G, dependencies$4F, () => {
   Object.defineProperty(Complex$1, 'name', {
     value: 'Complex'
   });
@@ -6764,9 +6764,9 @@ var fraction$1 = {
 } (fraction$1));
 var Fraction$1 = getDefaultExportFromCjs(fractionExports);
 
-var name$4E = 'Fraction';
+var name$4F = 'Fraction';
 var dependencies$4E = [];
-var createFractionClass = factory(name$4E, dependencies$4E, () => {
+var createFractionClass = factory(name$4F, dependencies$4E, () => {
   Object.defineProperty(Fraction$1, 'name', {
     value: 'Fraction'
   });
@@ -6788,9 +6788,9 @@ var createFractionClass = factory(name$4E, dependencies$4E, () => {
   isClass: true
 });
 
-var name$4D = 'Range';
+var name$4E = 'Range';
 var dependencies$4D = [];
-var createRangeClass = factory(name$4D, dependencies$4D, () => {
+var createRangeClass = factory(name$4E, dependencies$4D, () => {
   function Range(start, end, step) {
     if (!(this instanceof Range)) {
       throw new SyntaxError('Constructor must be called with the new operator');
@@ -6954,9 +6954,9 @@ var createRangeClass = factory(name$4D, dependencies$4D, () => {
   isClass: true
 });
 
-var name$4C = 'Matrix';
+var name$4D = 'Matrix';
 var dependencies$4C = [];
-var createMatrixClass = factory(name$4C, dependencies$4C, () => {
+var createMatrixClass = factory(name$4D, dependencies$4C, () => {
   function Matrix() {
     if (!(this instanceof Matrix)) {
       throw new SyntaxError('Constructor must be called with the new operator');
@@ -7109,9 +7109,9 @@ function maxArgumentCount(fn) {
   }, -1);
 }
 
-var name$4B = 'DenseMatrix';
+var name$4C = 'DenseMatrix';
 var dependencies$4B = ['Matrix'];
-var createDenseMatrixClass = factory(name$4B, dependencies$4B, _ref => {
+var createDenseMatrixClass = factory(name$4C, dependencies$4B, _ref => {
   var {
     Matrix
   } = _ref;
@@ -7610,13 +7610,13 @@ var createDenseMatrixClass = factory(name$4B, dependencies$4B, _ref => {
   isClass: true
 });
 
-var name$4A = 'clone';
+var name$4B = 'clone';
 var dependencies$4A = ['typed'];
-var createClone = factory(name$4A, dependencies$4A, _ref => {
+var createClone = factory(name$4B, dependencies$4A, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4A, {
+  return typed(name$4B, {
     any: clone$2
   });
 });
@@ -7737,13 +7737,13 @@ function scatter(a, j, w, x, u, mark, cindex, f, inverse, update, value) {
   }
 }
 
-var name$4z = 'isInteger';
+var name$4A = 'isInteger';
 var dependencies$4z = ['typed'];
-var createIsInteger = factory(name$4z, dependencies$4z, _ref => {
+var createIsInteger = factory(name$4A, dependencies$4z, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4z, {
+  return typed(name$4A, {
     number: isInteger$1,
     BigNumber: function BigNumber(x) {
       return x.isInt();
@@ -8188,13 +8188,13 @@ function isNaNNumber(x) {
 }
 isNaNNumber.signature = n1;
 
-var name$4y = 'isNegative';
+var name$4z = 'isNegative';
 var dependencies$4y = ['typed'];
-var createIsNegative = factory(name$4y, dependencies$4y, _ref => {
+var createIsNegative = factory(name$4z, dependencies$4y, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4y, {
+  return typed(name$4z, {
     number: isNegativeNumber,
     BigNumber: function BigNumber(x) {
       return x.isNeg() && !x.isZero() && !x.isNaN();
@@ -8207,27 +8207,27 @@ var createIsNegative = factory(name$4y, dependencies$4y, _ref => {
   });
 });
 
-var name$4x = 'isNumeric';
+var name$4y = 'isNumeric';
 var dependencies$4x = ['typed'];
-var createIsNumeric = factory(name$4x, dependencies$4x, _ref => {
+var createIsNumeric = factory(name$4y, dependencies$4x, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4x, {
+  return typed(name$4y, {
     'number | BigNumber | Fraction | boolean': () => true,
     'Complex | Unit | string | null | undefined | Node': () => false,
     'Array | Matrix': typed.referToSelf(self => x => deepMap(x, self))
   });
 });
 
-var name$4w = 'hasNumericValue';
+var name$4x = 'hasNumericValue';
 var dependencies$4w = ['typed', 'isNumeric'];
-var createHasNumericValue = factory(name$4w, dependencies$4w, _ref => {
+var createHasNumericValue = factory(name$4x, dependencies$4w, _ref => {
   var {
     typed,
     isNumeric
   } = _ref;
-  return typed(name$4w, {
+  return typed(name$4x, {
     boolean: () => true,
     string: function string(x) {
       return x.trim().length > 0 && !isNaN(Number(x));
@@ -8238,13 +8238,13 @@ var createHasNumericValue = factory(name$4w, dependencies$4w, _ref => {
   });
 });
 
-var name$4v = 'isPositive';
+var name$4w = 'isPositive';
 var dependencies$4v = ['typed'];
-var createIsPositive = factory(name$4v, dependencies$4v, _ref => {
+var createIsPositive = factory(name$4w, dependencies$4v, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4v, {
+  return typed(name$4w, {
     number: isPositiveNumber,
     BigNumber: function BigNumber(x) {
       return !x.isNeg() && !x.isZero() && !x.isNaN();
@@ -8257,13 +8257,13 @@ var createIsPositive = factory(name$4v, dependencies$4v, _ref => {
   });
 });
 
-var name$4u = 'isZero';
+var name$4v = 'isZero';
 var dependencies$4u = ['typed'];
-var createIsZero = factory(name$4u, dependencies$4u, _ref => {
+var createIsZero = factory(name$4v, dependencies$4u, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4u, {
+  return typed(name$4v, {
     number: isZeroNumber,
     BigNumber: function BigNumber(x) {
       return x.isZero();
@@ -8279,13 +8279,13 @@ var createIsZero = factory(name$4u, dependencies$4u, _ref => {
   });
 });
 
-var name$4t = 'isNaN';
+var name$4u = 'isNaN';
 var dependencies$4t = ['typed'];
-var createIsNaN = factory(name$4t, dependencies$4t, _ref => {
+var createIsNaN = factory(name$4u, dependencies$4t, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4t, {
+  return typed(name$4u, {
     number: isNaNNumber,
     BigNumber: function BigNumber(x) {
       return x.isNaN();
@@ -8305,13 +8305,13 @@ var createIsNaN = factory(name$4t, dependencies$4t, _ref => {
   });
 });
 
-var name$4s = 'typeOf';
+var name$4t = 'typeOf';
 var dependencies$4s = ['typed'];
-var createTypeOf = factory(name$4s, dependencies$4s, _ref => {
+var createTypeOf = factory(name$4t, dependencies$4s, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4s, {
+  return typed(name$4t, {
     any: typeOf$1
   });
 });
@@ -8356,9 +8356,9 @@ var createCompareUnits = factory('compareUnits', ['typed'], _ref => {
   };
 });
 
-var name$4r = 'equalScalar';
+var name$4s = 'equalScalar';
 var dependencies$4r = ['typed', 'config'];
-var createEqualScalar = factory(name$4r, dependencies$4r, _ref => {
+var createEqualScalar = factory(name$4s, dependencies$4r, _ref => {
   var {
     typed,
     config
@@ -8366,7 +8366,7 @@ var createEqualScalar = factory(name$4r, dependencies$4r, _ref => {
   var compareUnits = createCompareUnits({
     typed
   });
-  return typed(name$4r, {
+  return typed(name$4s, {
     'boolean, boolean': function booleanBoolean(x, y) {
       return x === y;
     },
@@ -8384,21 +8384,21 @@ var createEqualScalar = factory(name$4r, dependencies$4r, _ref => {
     }
   }, compareUnits);
 });
-factory(name$4r, ['typed', 'config'], _ref2 => {
+factory(name$4s, ['typed', 'config'], _ref2 => {
   var {
     typed,
     config
   } = _ref2;
-  return typed(name$4r, {
+  return typed(name$4s, {
     'number, number': function numberNumber(x, y) {
       return nearlyEqual$1(x, y, config.epsilon);
     }
   });
 });
 
-var name$4q = 'SparseMatrix';
+var name$4r = 'SparseMatrix';
 var dependencies$4q = ['typed', 'equalScalar', 'Matrix'];
-var createSparseMatrixClass = factory(name$4q, dependencies$4q, _ref => {
+var createSparseMatrixClass = factory(name$4r, dependencies$4q, _ref => {
   var {
     typed,
     equalScalar,
@@ -9225,7 +9225,7 @@ var createSparseMatrixClass = factory(name$4q, dependencies$4q, _ref => {
   isClass: true
 });
 
-var name$4p = 'number';
+var name$4q = 'number';
 var dependencies$4p = ['typed'];
 function getNonDecimalNumberParts(input) {
   var nonDecimalWithRadixMatch = input.match(/(0[box])([0-9a-fA-F]*)\.([0-9a-fA-F]*)/);
@@ -9260,7 +9260,7 @@ function makeNumberFromNonDecimalParts(parts) {
   }
   return result;
 }
-var createNumber = factory(name$4p, dependencies$4p, _ref => {
+var createNumber = factory(name$4q, dependencies$4p, _ref => {
   var {
     typed
   } = _ref;
@@ -9320,13 +9320,13 @@ var createNumber = factory(name$4p, dependencies$4p, _ref => {
   return number;
 });
 
-var name$4o = 'string';
+var name$4p = 'string';
 var dependencies$4o = ['typed'];
-var createString = factory(name$4o, dependencies$4o, _ref => {
+var createString = factory(name$4p, dependencies$4o, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4o, {
+  return typed(name$4p, {
     '': function _() {
       return '';
     },
@@ -9347,13 +9347,13 @@ var createString = factory(name$4o, dependencies$4o, _ref => {
   });
 });
 
-var name$4n = 'boolean';
+var name$4o = 'boolean';
 var dependencies$4n = ['typed'];
-var createBoolean = factory(name$4n, dependencies$4n, _ref => {
+var createBoolean = factory(name$4o, dependencies$4n, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4n, {
+  return typed(name$4o, {
     '': function _() {
       return false;
     },
@@ -9386,9 +9386,9 @@ var createBoolean = factory(name$4n, dependencies$4n, _ref => {
   });
 });
 
-var name$4m = 'bignumber';
+var name$4n = 'bignumber';
 var dependencies$4m = ['typed', 'BigNumber'];
-var createBignumber = factory(name$4m, dependencies$4m, _ref => {
+var createBignumber = factory(name$4n, dependencies$4m, _ref => {
   var {
     typed,
     BigNumber
@@ -9431,9 +9431,9 @@ var createBignumber = factory(name$4m, dependencies$4m, _ref => {
   });
 });
 
-var name$4l = 'complex';
+var name$4m = 'complex';
 var dependencies$4l = ['typed', 'Complex'];
-var createComplex = factory(name$4l, dependencies$4l, _ref => {
+var createComplex = factory(name$4m, dependencies$4l, _ref => {
   var {
     typed,
     Complex
@@ -9476,9 +9476,9 @@ var createComplex = factory(name$4l, dependencies$4l, _ref => {
   });
 });
 
-var name$4k = 'fraction';
+var name$4l = 'fraction';
 var dependencies$4k = ['typed', 'Fraction'];
-var createFraction = factory(name$4k, dependencies$4k, _ref => {
+var createFraction = factory(name$4l, dependencies$4k, _ref => {
   var {
     typed,
     Fraction
@@ -9512,16 +9512,16 @@ var createFraction = factory(name$4k, dependencies$4k, _ref => {
   });
 });
 
-var name$4j = 'matrix';
+var name$4k = 'matrix';
 var dependencies$4j = ['typed', 'Matrix', 'DenseMatrix', 'SparseMatrix'];
-var createMatrix = factory(name$4j, dependencies$4j, _ref => {
+var createMatrix = factory(name$4k, dependencies$4j, _ref => {
   var {
     typed,
     Matrix,
     DenseMatrix,
     SparseMatrix
   } = _ref;
-  return typed(name$4j, {
+  return typed(name$4k, {
     '': function _() {
       return _create([]);
     },
@@ -9551,15 +9551,15 @@ var createMatrix = factory(name$4j, dependencies$4j, _ref => {
   }
 });
 
-var name$4i = 'matrixFromFunction';
+var name$4j = 'matrixFromFunction';
 var dependencies$4i = ['typed', 'matrix', 'isZero'];
-var createMatrixFromFunction = factory(name$4i, dependencies$4i, _ref => {
+var createMatrixFromFunction = factory(name$4j, dependencies$4i, _ref => {
   var {
     typed,
     matrix,
     isZero
   } = _ref;
-  return typed(name$4i, {
+  return typed(name$4j, {
     'Array | Matrix, function, string, string': function ArrayMatrixFunctionStringString(size, fn, format, datatype) {
       return _create(size, fn, format, datatype);
     },
@@ -9596,16 +9596,16 @@ var createMatrixFromFunction = factory(name$4i, dependencies$4i, _ref => {
   }
 });
 
-var name$4h = 'matrixFromRows';
+var name$4i = 'matrixFromRows';
 var dependencies$4h = ['typed', 'matrix', 'flatten', 'size'];
-var createMatrixFromRows = factory(name$4h, dependencies$4h, _ref => {
+var createMatrixFromRows = factory(name$4i, dependencies$4h, _ref => {
   var {
     typed,
     matrix,
     flatten,
     size
   } = _ref;
-  return typed(name$4h, {
+  return typed(name$4i, {
     '...Array': function Array(arr) {
       return _createArray(arr);
     },
@@ -9644,16 +9644,16 @@ var createMatrixFromRows = factory(name$4h, dependencies$4h, _ref => {
   }
 });
 
-var name$4g = 'matrixFromColumns';
+var name$4h = 'matrixFromColumns';
 var dependencies$4g = ['typed', 'matrix', 'flatten', 'size'];
-var createMatrixFromColumns = factory(name$4g, dependencies$4g, _ref => {
+var createMatrixFromColumns = factory(name$4h, dependencies$4g, _ref => {
   var {
     typed,
     matrix,
     flatten,
     size
   } = _ref;
-  return typed(name$4g, {
+  return typed(name$4h, {
     '...Array': function Array(arr) {
       return _createArray(arr);
     },
@@ -9698,26 +9698,26 @@ var createMatrixFromColumns = factory(name$4g, dependencies$4g, _ref => {
   }
 });
 
-var name$4f = 'splitUnit';
+var name$4g = 'splitUnit';
 var dependencies$4f = ['typed'];
-var createSplitUnit = factory(name$4f, dependencies$4f, _ref => {
+var createSplitUnit = factory(name$4g, dependencies$4f, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4f, {
+  return typed(name$4g, {
     'Unit, Array': function UnitArray(unit, parts) {
       return unit.splitUnit(parts);
     }
   });
 });
 
-var name$4e = 'unaryMinus';
+var name$4f = 'unaryMinus';
 var dependencies$4e = ['typed'];
-var createUnaryMinus = factory(name$4e, dependencies$4e, _ref => {
+var createUnaryMinus = factory(name$4f, dependencies$4e, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4e, {
+  return typed(name$4f, {
     number: unaryMinusNumber,
     'Complex | BigNumber | Fraction': x => x.neg(),
     Unit: typed.referToSelf(self => x => {
@@ -9729,15 +9729,15 @@ var createUnaryMinus = factory(name$4e, dependencies$4e, _ref => {
   });
 });
 
-var name$4d = 'unaryPlus';
+var name$4e = 'unaryPlus';
 var dependencies$4d = ['typed', 'config', 'BigNumber'];
-var createUnaryPlus = factory(name$4d, dependencies$4d, _ref => {
+var createUnaryPlus = factory(name$4e, dependencies$4d, _ref => {
   var {
     typed,
     config,
     BigNumber
   } = _ref;
-  return typed(name$4d, {
+  return typed(name$4e, {
     number: unaryPlusNumber,
     Complex: function Complex(x) {
       return x;
@@ -9758,27 +9758,27 @@ var createUnaryPlus = factory(name$4d, dependencies$4d, _ref => {
   });
 });
 
-var name$4c = 'abs';
+var name$4d = 'abs';
 var dependencies$4c = ['typed'];
-var createAbs = factory(name$4c, dependencies$4c, _ref => {
+var createAbs = factory(name$4d, dependencies$4c, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4c, {
+  return typed(name$4d, {
     number: absNumber,
     'Complex | BigNumber | Fraction | Unit': x => x.abs(),
     'Array | Matrix': typed.referToSelf(self => x => deepMap(x, self))
   });
 });
 
-var name$4b = 'apply';
+var name$4c = 'apply';
 var dependencies$4b = ['typed', 'isInteger'];
-var createApply = factory(name$4b, dependencies$4b, _ref => {
+var createApply = factory(name$4c, dependencies$4b, _ref => {
   var {
     typed,
     isInteger
   } = _ref;
-  return typed(name$4b, {
+  return typed(name$4c, {
     'Array | Matrix, number | BigNumber, function': function ArrayMatrixNumberBigNumberFunction(mat, dim, callback) {
       if (!isInteger(dim)) {
         throw new TypeError('Integer number expected for dimension');
@@ -9831,13 +9831,13 @@ function _switch(mat) {
   return ret;
 }
 
-var name$4a = 'addScalar';
+var name$4b = 'addScalar';
 var dependencies$4a = ['typed'];
-var createAddScalar = factory(name$4a, dependencies$4a, _ref => {
+var createAddScalar = factory(name$4b, dependencies$4a, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$4a, {
+  return typed(name$4b, {
     'number, number': addNumber,
     'Complex, Complex': function ComplexComplex(x, y) {
       return x.add(y);
@@ -9864,9 +9864,9 @@ var createAddScalar = factory(name$4a, dependencies$4a, _ref => {
   });
 });
 
-var name$49 = 'cbrt';
+var name$4a = 'cbrt';
 var dependencies$49 = ['config', 'typed', 'isNegative', 'unaryMinus', 'matrix', 'Complex', 'BigNumber', 'Fraction'];
-var createCbrt = factory(name$49, dependencies$49, _ref => {
+var createCbrt = factory(name$4a, dependencies$49, _ref => {
   var {
     config,
     typed,
@@ -9877,7 +9877,7 @@ var createCbrt = factory(name$49, dependencies$49, _ref => {
     BigNumber,
     Fraction
   } = _ref;
-  return typed(name$49, {
+  return typed(name$4a, {
     number: cbrtNumber,
     Complex: _cbrtComplex,
     'Complex, boolean': _cbrtComplex,
@@ -9926,9 +9926,9 @@ var createCbrt = factory(name$49, dependencies$49, _ref => {
   }
 });
 
-var name$48 = 'matAlgo11xS0s';
+var name$49 = 'matAlgo11xS0s';
 var dependencies$48 = ['typed', 'equalScalar'];
-var createMatAlgo11xS0s = factory(name$48, dependencies$48, _ref => {
+var createMatAlgo11xS0s = factory(name$49, dependencies$48, _ref => {
   var {
     typed,
     equalScalar
@@ -9980,9 +9980,9 @@ var createMatAlgo11xS0s = factory(name$48, dependencies$48, _ref => {
   };
 });
 
-var name$47 = 'matAlgo12xSfs';
+var name$48 = 'matAlgo12xSfs';
 var dependencies$47 = ['typed', 'DenseMatrix'];
-var createMatAlgo12xSfs = factory(name$47, dependencies$47, _ref => {
+var createMatAlgo12xSfs = factory(name$48, dependencies$47, _ref => {
   var {
     typed,
     DenseMatrix
@@ -10034,9 +10034,9 @@ var createMatAlgo12xSfs = factory(name$47, dependencies$47, _ref => {
   };
 });
 
-var name$46 = 'matAlgo14xDs';
+var name$47 = 'matAlgo14xDs';
 var dependencies$46 = ['typed'];
-var createMatAlgo14xDs = factory(name$46, dependencies$46, _ref => {
+var createMatAlgo14xDs = factory(name$47, dependencies$46, _ref => {
   var {
     typed
   } = _ref;
@@ -10073,15 +10073,15 @@ var createMatAlgo14xDs = factory(name$46, dependencies$46, _ref => {
   }
 });
 
-var name$45 = 'ceil';
+var name$46 = 'ceil';
 var dependencies$45 = ['typed', 'config', 'round', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix'];
-var createCeilNumber = factory(name$45, ['typed', 'config', 'round'], _ref => {
+var createCeilNumber = factory(name$46, ['typed', 'config', 'round'], _ref => {
   var {
     typed,
     config,
     round
   } = _ref;
-  return typed(name$45, {
+  return typed(name$46, {
     number: function number(x) {
       if (nearlyEqual$1(x, round(x), config.epsilon)) {
         return round(x);
@@ -10101,7 +10101,7 @@ var createCeilNumber = factory(name$45, ['typed', 'config', 'round'], _ref => {
     }
   });
 });
-var createCeil = factory(name$45, dependencies$45, _ref2 => {
+var createCeil = factory(name$46, dependencies$45, _ref2 => {
   var {
     typed,
     config,
@@ -10187,13 +10187,13 @@ var createCeil = factory(name$45, dependencies$45, _ref2 => {
   });
 });
 
-var name$44 = 'cube';
+var name$45 = 'cube';
 var dependencies$44 = ['typed'];
-var createCube = factory(name$44, dependencies$44, _ref => {
+var createCube = factory(name$45, dependencies$44, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$44, {
+  return typed(name$45, {
     number: cubeNumber,
     Complex: function Complex(x) {
       return x.mul(x).mul(x);
@@ -10210,13 +10210,13 @@ var createCube = factory(name$44, dependencies$44, _ref => {
   });
 });
 
-var name$43 = 'exp';
+var name$44 = 'exp';
 var dependencies$43 = ['typed'];
-var createExp = factory(name$43, dependencies$43, _ref => {
+var createExp = factory(name$44, dependencies$43, _ref => {
   var {
     typed
   } = _ref;
-  return typed(name$43, {
+  return typed(name$44, {
     number: expNumber,
     Complex: function Complex(x) {
       return x.exp();
@@ -10227,14 +10227,14 @@ var createExp = factory(name$43, dependencies$43, _ref => {
   });
 });
 
-var name$42 = 'expm1';
+var name$43 = 'expm1';
 var dependencies$42 = ['typed', 'Complex'];
-var createExpm1 = factory(name$42, dependencies$42, _ref => {
+var createExpm1 = factory(name$43, dependencies$42, _ref => {
   var {
     typed,
     Complex: _Complex
   } = _ref;
-  return typed(name$42, {
+  return typed(name$43, {
     number: expm1Number,
     Complex: function Complex(x) {
       var r = Math.exp(x.re);
@@ -10246,15 +10246,15 @@ var createExpm1 = factory(name$42, dependencies$42, _ref => {
   });
 });
 
-var name$41 = 'fix';
+var name$42 = 'fix';
 var dependencies$41 = ['typed', 'Complex', 'matrix', 'ceil', 'floor', 'equalScalar', 'zeros', 'DenseMatrix'];
-var createFixNumber = factory(name$41, ['typed', 'ceil', 'floor'], _ref => {
+var createFixNumber = factory(name$42, ['typed', 'ceil', 'floor'], _ref => {
   var {
     typed,
     ceil,
     floor
   } = _ref;
-  return typed(name$41, {
+  return typed(name$42, {
     number: function number(x) {
       return x > 0 ? floor(x) : ceil(x);
     },
@@ -10263,7 +10263,7 @@ var createFixNumber = factory(name$41, ['typed', 'ceil', 'floor'], _ref => {
     }
   });
 });
-var createFix = factory(name$41, dependencies$41, _ref2 => {
+var createFix = factory(name$42, dependencies$41, _ref2 => {
   var {
     typed,
     Complex: _Complex,
@@ -10330,15 +10330,15 @@ var createFix = factory(name$41, dependencies$41, _ref2 => {
   });
 });
 
-var name$40 = 'floor';
+var name$41 = 'floor';
 var dependencies$40 = ['typed', 'config', 'round', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix'];
-var createFloorNumber = factory(name$40, ['typed', 'config', 'round'], _ref => {
+var createFloorNumber = factory(name$41, ['typed', 'config', 'round'], _ref => {
   var {
     typed,
     config,
     round
   } = _ref;
-  return typed(name$40, {
+  return typed(name$41, {
     number: function number(x) {
       if (nearlyEqual$1(x, round(x), config.epsilon)) {
         return round(x);
@@ -10358,7 +10358,7 @@ var createFloorNumber = factory(name$40, ['typed', 'config', 'round'], _ref => {
     }
   });
 });
-var createFloor = factory(name$40, dependencies$40, _ref2 => {
+var createFloor = factory(name$41, dependencies$40, _ref2 => {
   var {
     typed,
     config,
@@ -10444,9 +10444,9 @@ var createFloor = factory(name$40, dependencies$40, _ref2 => {
   });
 });
 
-var name$3$ = 'matAlgo01xDSid';
+var name$40 = 'matAlgo01xDSid';
 var dependencies$3$ = ['typed'];
-var createMatAlgo01xDSid = factory(name$3$, dependencies$3$, _ref => {
+var createMatAlgo01xDSid = factory(name$40, dependencies$3$, _ref => {
   var {
     typed
   } = _ref;
@@ -10502,9 +10502,9 @@ var createMatAlgo01xDSid = factory(name$3$, dependencies$3$, _ref => {
   };
 });
 
-var name$3_ = 'matAlgo04xSidSid';
+var name$3$ = 'matAlgo04xSidSid';
 var dependencies$3_ = ['typed', 'equalScalar'];
-var createMatAlgo04xSidSid = factory(name$3_, dependencies$3_, _ref => {
+var createMatAlgo04xSidSid = factory(name$3$, dependencies$3_, _ref => {
   var {
     typed,
     equalScalar
@@ -10603,9 +10603,9 @@ var createMatAlgo04xSidSid = factory(name$3_, dependencies$3_, _ref => {
   };
 });
 
-var name$3Z = 'matAlgo10xSids';
+var name$3_ = 'matAlgo10xSids';
 var dependencies$3Z = ['typed', 'DenseMatrix'];
-var createMatAlgo10xSids = factory(name$3Z, dependencies$3Z, _ref => {
+var createMatAlgo10xSids = factory(name$3_, dependencies$3Z, _ref => {
   var {
     typed,
     DenseMatrix
@@ -10657,9 +10657,9 @@ var createMatAlgo10xSids = factory(name$3Z, dependencies$3Z, _ref => {
   };
 });
 
-var name$3Y = 'matAlgo13xDD';
+var name$3Z = 'matAlgo13xDD';
 var dependencies$3Y = ['typed'];
-var createMatAlgo13xDD = factory(name$3Y, dependencies$3Y, _ref => {
+var createMatAlgo13xDD = factory(name$3Z, dependencies$3Y, _ref => {
   var {
     typed
   } = _ref;
@@ -10708,12 +10708,66 @@ var createMatAlgo13xDD = factory(name$3Y, dependencies$3Y, _ref => {
   }
 });
 
+var name$3Y = 'broadcast';
+var dependancies = ['concat'];
+var createBroadcast = factory(name$3Y, dependancies, _ref => {
+  var {
+    concat
+  } = _ref;
+  return function (A, B) {
+    var N = Math.max(A._size.length, B._size.length);
+    if (A._size.length === B._size.length) {
+      if (A._size.every((dim, i) => dim === B._size[i])) {
+        return [A, B];
+      }
+    }
+    var sizeA = _padLeft(A._size, N, 0);
+    var sizeB = _padLeft(B._size, N, 0);
+    var sizeMax = [];
+    for (var dim = 0; dim < N; dim++) {
+      sizeMax[dim] = Math.max(sizeA[dim], sizeB[dim]);
+    }
+    for (var _dim = 0; _dim < N; _dim++) {
+      _checkRules(sizeA, sizeMax, _dim);
+      _checkRules(sizeB, sizeMax, _dim);
+    }
+    var AA = A.clone();
+    var BB = B.clone();
+    if (AA._size.length < N) {
+      AA.reshape(_padLeft(AA._size, N, 1));
+    } else if (BB._size.length < N) {
+      BB.reshape(_padLeft(BB._size, N, 1));
+    }
+    for (var _dim2 = 0; _dim2 < N; _dim2++) {
+      if (AA._size[_dim2] < sizeMax[_dim2]) {
+        AA = _stretch(AA, sizeMax[_dim2], _dim2);
+      }
+      if (BB._size[_dim2] < sizeMax[_dim2]) {
+        BB = _stretch(BB, sizeMax[_dim2], _dim2);
+      }
+    }
+    return [AA, BB];
+  };
+  function _padLeft(shape, N, filler) {
+    return [...Array(N - shape.length).fill(filler), ...shape];
+  }
+  function _stretch(arrayToStretch, sizeToStretch, dimToStretch) {
+    return concat(...Array(sizeToStretch).fill(arrayToStretch), dimToStretch);
+  }
+  function _checkRules(shape, sizeMax, dim) {
+    if (shape[dim] < sizeMax[dim] & shape[dim] > 1) {
+      throw new Error("shape missmatch: missmatch is found in arg with shape (".concat(shape, ") not possible to broadcast dimension ").concat(dim, " with size ").concat(shape[dim], " to size ").concat(sizeMax[dim]));
+    }
+  }
+});
+
 var name$3X = 'matrixAlgorithmSuite';
-var dependencies$3X = ['typed', 'matrix'];
+var dependencies$3X = ['typed', 'matrix', 'concat'];
 var createMatrixAlgorithmSuite = factory(name$3X, dependencies$3X, _ref => {
   var {
     typed,
-    matrix
+    matrix,
+    concat
   } = _ref;
   var matAlgo13xDD = createMatAlgo13xDD({
     typed
@@ -10721,62 +10775,65 @@ var createMatrixAlgorithmSuite = factory(name$3X, dependencies$3X, _ref => {
   var matAlgo14xDs = createMatAlgo14xDs({
     typed
   });
+  var broadcast = createBroadcast({
+    concat
+  });
   return function matrixAlgorithmSuite(options) {
     var elop = options.elop;
     var SD = options.SD || options.DS;
     var matrixSignatures;
     if (elop) {
       matrixSignatures = {
-        'DenseMatrix, DenseMatrix': (x, y) => matAlgo13xDD(x, y, elop),
-        'Array, Array': (x, y) => matAlgo13xDD(matrix(x), matrix(y), elop).valueOf(),
-        'Array, DenseMatrix': (x, y) => matAlgo13xDD(matrix(x), y, elop),
-        'DenseMatrix, Array': (x, y) => matAlgo13xDD(x, matrix(y), elop)
+        'DenseMatrix, DenseMatrix': (x, y) => matAlgo13xDD(...broadcast(x, y), elop),
+        'Array, Array': (x, y) => matAlgo13xDD(...broadcast(matrix(x), matrix(y)), elop).valueOf(),
+        'Array, DenseMatrix': (x, y) => matAlgo13xDD(...broadcast(matrix(x), y), elop),
+        'DenseMatrix, Array': (x, y) => matAlgo13xDD(...broadcast(x, matrix(y)), elop)
       };
       if (options.SS) {
-        matrixSignatures['SparseMatrix, SparseMatrix'] = (x, y) => options.SS(x, y, elop, false);
+        matrixSignatures['SparseMatrix, SparseMatrix'] = (x, y) => options.SS(...broadcast(x, y), elop, false);
       }
       if (options.DS) {
-        matrixSignatures['DenseMatrix, SparseMatrix'] = (x, y) => options.DS(x, y, elop, false);
-        matrixSignatures['Array, SparseMatrix'] = (x, y) => options.DS(matrix(x), y, elop, false);
+        matrixSignatures['DenseMatrix, SparseMatrix'] = (x, y) => options.DS(...broadcast(x, y), elop, false);
+        matrixSignatures['Array, SparseMatrix'] = (x, y) => options.DS(...broadcast(matrix(x), y), elop, false);
       }
       if (SD) {
-        matrixSignatures['SparseMatrix, DenseMatrix'] = (x, y) => SD(y, x, elop, true);
-        matrixSignatures['SparseMatrix, Array'] = (x, y) => SD(matrix(y), x, elop, true);
+        matrixSignatures['SparseMatrix, DenseMatrix'] = (x, y) => SD(...broadcast(y, x), elop, true);
+        matrixSignatures['SparseMatrix, Array'] = (x, y) => SD(...broadcast(matrix(y), x), elop, true);
       }
     } else {
       matrixSignatures = {
         'DenseMatrix, DenseMatrix': typed.referToSelf(self => (x, y) => {
-          return matAlgo13xDD(x, y, self);
+          return matAlgo13xDD(...broadcast(x, y), self);
         }),
         'Array, Array': typed.referToSelf(self => (x, y) => {
-          return matAlgo13xDD(matrix(x), matrix(y), self).valueOf();
+          return matAlgo13xDD(...broadcast(matrix(x), matrix(y)), self).valueOf();
         }),
         'Array, DenseMatrix': typed.referToSelf(self => (x, y) => {
-          return matAlgo13xDD(matrix(x), y, self);
+          return matAlgo13xDD(...broadcast(matrix(x), y), self);
         }),
         'DenseMatrix, Array': typed.referToSelf(self => (x, y) => {
-          return matAlgo13xDD(x, matrix(y), self);
+          return matAlgo13xDD(...broadcast(x, matrix(y)), self);
         })
       };
       if (options.SS) {
         matrixSignatures['SparseMatrix, SparseMatrix'] = typed.referToSelf(self => (x, y) => {
-          return options.SS(x, y, self, false);
+          return options.SS(...broadcast(x, y), self, false);
         });
       }
       if (options.DS) {
         matrixSignatures['DenseMatrix, SparseMatrix'] = typed.referToSelf(self => (x, y) => {
-          return options.DS(x, y, self, false);
+          return options.DS(...broadcast(x, y), self, false);
         });
         matrixSignatures['Array, SparseMatrix'] = typed.referToSelf(self => (x, y) => {
-          return options.DS(matrix(x), y, self, false);
+          return options.DS(...broadcast(matrix(x), y), self, false);
         });
       }
       if (SD) {
         matrixSignatures['SparseMatrix, DenseMatrix'] = typed.referToSelf(self => (x, y) => {
-          return SD(y, x, self, true);
+          return SD(...broadcast(y, x), self, true);
         });
         matrixSignatures['SparseMatrix, Array'] = typed.referToSelf(self => (x, y) => {
-          return SD(matrix(y), x, self, true);
+          return SD(...broadcast(matrix(y), x), self, true);
         });
       }
     }
@@ -10830,15 +10887,37 @@ var createMatrixAlgorithmSuite = factory(name$3X, dependencies$3X, _ref => {
   };
 });
 
+function ArgumentsError(fn, count, min, max) {
+  if (!(this instanceof ArgumentsError)) {
+    throw new SyntaxError('Constructor must be called with the new operator');
+  }
+  this.fn = fn;
+  this.count = count;
+  this.min = min;
+  this.max = max;
+  this.message = 'Wrong number of arguments in function ' + fn + ' (' + count + ' provided, ' + min + (max !== undefined && max !== null ? '-' + max : '') + ' expected)';
+  this.stack = new Error().stack;
+}
+ArgumentsError.prototype = new Error();
+ArgumentsError.prototype.constructor = Error;
+ArgumentsError.prototype.name = 'ArgumentsError';
+ArgumentsError.prototype.isArgumentsError = true;
+
 var name$3W = 'gcd';
-var dependencies$3W = ['typed', 'matrix', 'equalScalar', 'BigNumber', 'DenseMatrix'];
+var dependencies$3W = ['typed', 'matrix', 'equalScalar', 'BigNumber', 'DenseMatrix', 'concat'];
+var gcdTypes = 'number | BigNumber | Fraction | Matrix | Array';
+var gcdManyTypesSignature = "".concat(gcdTypes, ", ").concat(gcdTypes, ", ...").concat(gcdTypes);
+function is1d(array) {
+  return !array.some(element => Array.isArray(element));
+}
 var createGcd = factory(name$3W, dependencies$3W, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     BigNumber,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -10853,16 +10932,8 @@ var createGcd = factory(name$3W, dependencies$3W, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
-  });
-  var gcdTypes = 'number | BigNumber | Fraction | Matrix | Array';
-  var gcdManySignature = {};
-  gcdManySignature["".concat(gcdTypes, ", ").concat(gcdTypes, ", ...").concat(gcdTypes)] = typed.referToSelf(self => (a, b, args) => {
-    var res = self(a, b);
-    for (var i = 0; i < args.length; i++) {
-      res = self(res, args[i]);
-    }
-    return res;
+    matrix,
+    concat
   });
   return typed(name$3W, {
     'number, number': gcdNumber,
@@ -10872,7 +10943,27 @@ var createGcd = factory(name$3W, dependencies$3W, _ref => {
     SS: matAlgo04xSidSid,
     DS: matAlgo01xDSid,
     Ss: matAlgo10xSids
-  }), gcdManySignature);
+  }), {
+    [gcdManyTypesSignature]: typed.referToSelf(self => (a, b, args) => {
+      var res = self(a, b);
+      for (var i = 0; i < args.length; i++) {
+        res = self(res, args[i]);
+      }
+      return res;
+    }),
+    Array: typed.referToSelf(self => array => {
+      if (array.length === 1 && Array.isArray(array[0]) && is1d(array[0])) {
+        return self(...array[0]);
+      }
+      if (is1d(array)) {
+        return self(...array);
+      }
+      throw new ArgumentsError('gcd() supports only 1d matrices!');
+    }),
+    Matrix: typed.referToSelf(self => matrix => {
+      return self(matrix.toArray());
+    })
+  });
   function _gcdBigNumber(a, b) {
     if (!a.isInt() || !b.isInt()) {
       throw new Error('Parameters in function gcd must be integer numbers');
@@ -11032,12 +11123,13 @@ var createMatAlgo06xS0S0 = factory(name$3U, dependencies$3U, _ref => {
 });
 
 var name$3T = 'lcm';
-var dependencies$3T = ['typed', 'matrix', 'equalScalar'];
+var dependencies$3T = ['typed', 'matrix', 'equalScalar', 'concat'];
 var createLcm = factory(name$3T, dependencies$3T, _ref => {
   var {
     typed,
     matrix,
-    equalScalar
+    equalScalar,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -11053,7 +11145,8 @@ var createLcm = factory(name$3T, dependencies$3T, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var lcmTypes = 'number | BigNumber | Fraction | Matrix | Array';
   var lcmManySignature = {};
@@ -11315,13 +11408,14 @@ var createMatAlgo05xSfSf = factory(name$3P, dependencies$3P, _ref => {
 });
 
 var name$3O = 'mod';
-var dependencies$3O = ['typed', 'matrix', 'equalScalar', 'DenseMatrix'];
+var dependencies$3O = ['typed', 'matrix', 'equalScalar', 'DenseMatrix', 'concat'];
 var createMod = factory(name$3O, dependencies$3O, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -11344,7 +11438,8 @@ var createMod = factory(name$3O, dependencies$3O, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3O, {
     'number, number': modNumber,
@@ -11876,13 +11971,14 @@ var createMultiply = factory(name$3M, dependencies$3M, _ref => {
 });
 
 var name$3L = 'nthRoot';
-var dependencies$3L = ['typed', 'matrix', 'equalScalar', 'BigNumber'];
+var dependencies$3L = ['typed', 'matrix', 'equalScalar', 'BigNumber', 'concat'];
 var createNthRoot = factory(name$3L, dependencies$3L, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    BigNumber: _BigNumber
+    BigNumber: _BigNumber,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -11901,7 +11997,8 @@ var createNthRoot = factory(name$3L, dependencies$3L, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   function complexErr() {
     throw new Error('Complex number not supported in function nthRoot. Use nthRoots instead.');
@@ -12071,7 +12168,7 @@ var createSquare = factory(name$3I, dependencies$3I, _ref => {
 });
 
 var name$3H = 'subtract';
-var dependencies$3H = ['typed', 'matrix', 'equalScalar', 'addScalar', 'unaryMinus', 'DenseMatrix'];
+var dependencies$3H = ['typed', 'matrix', 'equalScalar', 'addScalar', 'unaryMinus', 'DenseMatrix', 'concat'];
 var createSubtract = factory(name$3H, dependencies$3H, _ref => {
   var {
     typed,
@@ -12079,7 +12176,8 @@ var createSubtract = factory(name$3H, dependencies$3H, _ref => {
     equalScalar,
     addScalar,
     unaryMinus,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -12101,7 +12199,8 @@ var createSubtract = factory(name$3H, dependencies$3H, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3H, {
     'number, number': (x, y) => x - y,
@@ -12296,13 +12395,14 @@ var createMatAlgo09xS0Sf = factory(name$3E, dependencies$3E, _ref => {
 });
 
 var name$3D = 'dotMultiply';
-var dependencies$3D = ['typed', 'matrix', 'equalScalar', 'multiplyScalar'];
+var dependencies$3D = ['typed', 'matrix', 'equalScalar', 'multiplyScalar', 'concat'];
 var createDotMultiply = factory(name$3D, dependencies$3D, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    multiplyScalar
+    multiplyScalar,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -12318,7 +12418,8 @@ var createDotMultiply = factory(name$3D, dependencies$3D, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3D, matrixAlgorithmSuite({
     elop: multiplyScalar,
@@ -12603,12 +12704,13 @@ function rightArithShiftBigNumber(x, y) {
 }
 
 var name$3C = 'bitAnd';
-var dependencies$3C = ['typed', 'matrix', 'equalScalar'];
+var dependencies$3C = ['typed', 'matrix', 'equalScalar', 'concat'];
 var createBitAnd = factory(name$3C, dependencies$3C, _ref => {
   var {
     typed,
     matrix,
-    equalScalar
+    equalScalar,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -12624,7 +12726,8 @@ var createBitAnd = factory(name$3C, dependencies$3C, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3C, {
     'number, number': bitAndNumber,
@@ -12650,13 +12753,14 @@ var createBitNot = factory(name$3B, dependencies$3B, _ref => {
 });
 
 var name$3A = 'bitOr';
-var dependencies$3A = ['typed', 'matrix', 'equalScalar', 'DenseMatrix'];
+var dependencies$3A = ['typed', 'matrix', 'equalScalar', 'DenseMatrix', 'concat'];
 var createBitOr = factory(name$3A, dependencies$3A, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -12671,7 +12775,8 @@ var createBitOr = factory(name$3A, dependencies$3A, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3A, {
     'number, number': bitOrNumber,
@@ -12749,12 +12854,13 @@ var createMatAlgo07xSSf = factory(name$3z, dependencies$3z, _ref => {
 });
 
 var name$3y = 'bitXor';
-var dependencies$3y = ['typed', 'matrix', 'DenseMatrix'];
+var dependencies$3y = ['typed', 'matrix', 'DenseMatrix', 'concat'];
 var createBitXor = factory(name$3y, dependencies$3y, _ref => {
   var {
     typed,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -12769,7 +12875,8 @@ var createBitXor = factory(name$3y, dependencies$3y, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3y, {
     'number, number': bitXorNumber,
@@ -12862,13 +12969,14 @@ var createNot = factory(name$3t, dependencies$3t, _ref => {
 });
 
 var name$3s = 'or';
-var dependencies$3s = ['typed', 'matrix', 'equalScalar', 'DenseMatrix'];
+var dependencies$3s = ['typed', 'matrix', 'equalScalar', 'DenseMatrix', 'concat'];
 var createOr = factory(name$3s, dependencies$3s, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -12883,7 +12991,8 @@ var createOr = factory(name$3s, dependencies$3s, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3s, {
     'number, number': orNumber,
@@ -12902,12 +13011,13 @@ var createOr = factory(name$3s, dependencies$3s, _ref => {
 });
 
 var name$3r = 'xor';
-var dependencies$3r = ['typed', 'matrix', 'DenseMatrix'];
+var dependencies$3r = ['typed', 'matrix', 'DenseMatrix', 'concat'];
 var createXor = factory(name$3r, dependencies$3r, _ref => {
   var {
     typed,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -12922,7 +13032,8 @@ var createXor = factory(name$3r, dependencies$3r, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$3r, {
     'number, number': xorNumber,
@@ -13035,7 +13146,8 @@ var createColumn = factory(name$3p, dependencies$3p, _ref => {
     validateIndex(column, value.size()[1]);
     var rowRange = range(0, value.size()[0]);
     var index = new Index(rowRange, column);
-    return value.subset(index);
+    var result = value.subset(index);
+    return isMatrix(result) ? result : matrix([[result]]);
   }
 });
 
@@ -13809,22 +13921,6 @@ var createReshape = factory(name$3b, dependencies$3b, _ref => {
   });
 });
 
-function ArgumentsError(fn, count, min, max) {
-  if (!(this instanceof ArgumentsError)) {
-    throw new SyntaxError('Constructor must be called with the new operator');
-  }
-  this.fn = fn;
-  this.count = count;
-  this.min = min;
-  this.max = max;
-  this.message = 'Wrong number of arguments in function ' + fn + ' (' + count + ' provided, ' + min + (max !== undefined && max !== null ? '-' + max : '') + ' expected)';
-  this.stack = new Error().stack;
-}
-ArgumentsError.prototype = new Error();
-ArgumentsError.prototype.constructor = Error;
-ArgumentsError.prototype.name = 'ArgumentsError';
-ArgumentsError.prototype.isArgumentsError = true;
-
 var name$3a = 'resize';
 var dependencies$3a = ['config', 'matrix'];
 var createResize = factory(name$3a, dependencies$3a, _ref => {
@@ -14065,7 +14161,8 @@ var createRow = factory(name$37, dependencies$37, _ref => {
     validateIndex(row, value.size()[0]);
     var columnRange = range(0, value.size()[1]);
     var index = new Index(row, columnRange);
-    return value.subset(index);
+    var result = value.subset(index);
+    return isMatrix(result) ? result : matrix([[result]]);
   }
 });
 
@@ -14409,7 +14506,7 @@ var createZeros = factory(name$31, dependencies$31, _ref => {
 });
 
 var name$30 = 'fft';
-var dependencies$30 = ['typed', 'matrix', 'addScalar', 'multiplyScalar', 'divideScalar', 'exp', 'tau', 'i'];
+var dependencies$30 = ['typed', 'matrix', 'addScalar', 'multiplyScalar', 'divideScalar', 'exp', 'tau', 'i', 'dotDivide', 'conj', 'pow', 'ceil', 'log2'];
 var createFft = factory(name$30, dependencies$30, _ref => {
   var {
     typed,
@@ -14419,7 +14516,12 @@ var createFft = factory(name$30, dependencies$30, _ref => {
     divideScalar,
     exp,
     tau,
-    i: I
+    i: I,
+    dotDivide,
+    conj,
+    pow,
+    ceil,
+    log2
   } = _ref;
   return typed(name$30, {
     Array: _ndFft,
@@ -14442,6 +14544,26 @@ var createFft = factory(name$30, dependencies$30, _ref => {
     }
     return _transpose(_1dFft(_transpose(arr), 1));
   }
+  function _czt(arr) {
+    var n = arr.length;
+    var w = exp(divideScalar(multiplyScalar(-1, multiplyScalar(I, tau)), n));
+    var chirp = [];
+    for (var i = 1 - n; i < n; i++) {
+      chirp.push(pow(w, divideScalar(pow(i, 2), 2)));
+    }
+    var N2 = pow(2, ceil(log2(n + n - 1)));
+    var xp = [...new Array(n).fill(0).map((_, i) => multiplyScalar(arr[i], chirp[n - 1 + i])), ...new Array(N2 - n).fill(0)];
+    var ichirp = [...new Array(n + n - 1).fill(0).map((_, i) => divideScalar(1, chirp[i])), ...new Array(N2 - (n + n - 1)).fill(0)];
+    var fftXp = _fft(xp);
+    var fftIchirp = _fft(ichirp);
+    var fftProduct = new Array(N2).fill(0).map((_, i) => multiplyScalar(fftXp[i], fftIchirp[i]));
+    var ifftProduct = dotDivide(conj(_ndFft(conj(fftProduct))), N2);
+    var ret = [];
+    for (var _i = n - 1; _i < n + n - 1; _i++) {
+      ret.push(multiplyScalar(ifftProduct[_i], chirp[_i]));
+    }
+    return ret;
+  }
   function _fft(arr) {
     var len = arr.length;
     if (len === 1) return [arr[0]];
@@ -14454,8 +14576,9 @@ var createFft = factory(name$30, dependencies$30, _ref => {
         ret[k + len / 2] = addScalar(p, multiplyScalar(-1, q));
       }
       return ret;
+    } else {
+      return _czt(arr);
     }
-    throw new Error('Can only calculate FFT of power-of-two size');
   }
 });
 
@@ -14746,15 +14869,17 @@ function _print(template, values, options) {
 }
 
 var name$2S = 'to';
-var dependencies$2S = ['typed', 'matrix'];
+var dependencies$2S = ['typed', 'matrix', 'concat'];
 var createTo = factory(name$2S, dependencies$2S, _ref => {
   var {
     typed,
-    matrix
+    matrix,
+    concat
   } = _ref;
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2S, {
     'Unit, Unit | string': (x, unit) => x.to(unit)
@@ -15259,14 +15384,15 @@ var createNthRoots = factory(name$2K, dependencies$2K, _ref => {
 });
 
 var name$2J = 'dotPow';
-var dependencies$2J = ['typed', 'equalScalar', 'matrix', 'pow', 'DenseMatrix'];
+var dependencies$2J = ['typed', 'equalScalar', 'matrix', 'pow', 'DenseMatrix', 'concat'];
 var createDotPow = factory(name$2J, dependencies$2J, _ref => {
   var {
     typed,
     equalScalar,
     matrix,
     pow,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -15285,7 +15411,8 @@ var createDotPow = factory(name$2J, dependencies$2J, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var powScalarSignatures = {};
   for (var signature in pow.signatures) {
@@ -15306,14 +15433,15 @@ var createDotPow = factory(name$2J, dependencies$2J, _ref => {
 });
 
 var name$2I = 'dotDivide';
-var dependencies$2I = ['typed', 'matrix', 'equalScalar', 'divideScalar', 'DenseMatrix'];
+var dependencies$2I = ['typed', 'matrix', 'equalScalar', 'divideScalar', 'DenseMatrix', 'concat'];
 var createDotDivide = factory(name$2I, dependencies$2I, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     divideScalar,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -15336,7 +15464,8 @@ var createDotDivide = factory(name$2I, dependencies$2I, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2I, matrixAlgorithmSuite({
     elop: divideScalar,
@@ -15995,14 +16124,15 @@ var createUseMatrixForArrayScalar = factory('useMatrixForArrayScalar', ['typed',
 });
 
 var name$2C = 'leftShift';
-var dependencies$2C = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix'];
+var dependencies$2C = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix', 'concat'];
 var createLeftShift = factory(name$2C, dependencies$2C, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     zeros,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -16028,7 +16158,8 @@ var createLeftShift = factory(name$2C, dependencies$2C, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var useMatrixForArrayScalar = createUseMatrixForArrayScalar({
     typed,
@@ -16069,14 +16200,15 @@ var createLeftShift = factory(name$2C, dependencies$2C, _ref => {
 });
 
 var name$2B = 'rightArithShift';
-var dependencies$2B = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix'];
+var dependencies$2B = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix', 'concat'];
 var createRightArithShift = factory(name$2B, dependencies$2B, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     zeros,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -16102,7 +16234,8 @@ var createRightArithShift = factory(name$2B, dependencies$2B, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var useMatrixForArrayScalar = createUseMatrixForArrayScalar({
     typed,
@@ -16143,14 +16276,15 @@ var createRightArithShift = factory(name$2B, dependencies$2B, _ref => {
 });
 
 var name$2A = 'rightLogShift';
-var dependencies$2A = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix'];
+var dependencies$2A = ['typed', 'matrix', 'equalScalar', 'zeros', 'DenseMatrix', 'concat'];
 var createRightLogShift = factory(name$2A, dependencies$2A, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     zeros,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -16176,7 +16310,8 @@ var createRightLogShift = factory(name$2A, dependencies$2A, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var useMatrixForArrayScalar = createUseMatrixForArrayScalar({
     typed,
@@ -16216,14 +16351,15 @@ var createRightLogShift = factory(name$2A, dependencies$2A, _ref => {
 });
 
 var name$2z = 'and';
-var dependencies$2z = ['typed', 'matrix', 'equalScalar', 'zeros', 'not'];
+var dependencies$2z = ['typed', 'matrix', 'equalScalar', 'zeros', 'not', 'concat'];
 var createAnd = factory(name$2z, dependencies$2z, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     zeros,
-    not
+    not,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -16242,7 +16378,8 @@ var createAnd = factory(name$2z, dependencies$2z, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2z, {
     'number, number': andNumber,
@@ -16290,7 +16427,7 @@ var createAnd = factory(name$2z, dependencies$2z, _ref => {
 });
 
 var name$2y = 'compare';
-var dependencies$2y = ['typed', 'config', 'matrix', 'equalScalar', 'BigNumber', 'Fraction', 'DenseMatrix'];
+var dependencies$2y = ['typed', 'config', 'matrix', 'equalScalar', 'BigNumber', 'Fraction', 'DenseMatrix', 'concat'];
 var createCompare = factory(name$2y, dependencies$2y, _ref => {
   var {
     typed,
@@ -16299,7 +16436,8 @@ var createCompare = factory(name$2y, dependencies$2y, _ref => {
     matrix,
     BigNumber,
     Fraction,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16314,7 +16452,8 @@ var createCompare = factory(name$2y, dependencies$2y, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var compareUnits = createCompareUnits({
     typed
@@ -16520,16 +16659,18 @@ function compareComplexNumbers(x, y) {
 }
 
 var name$2w = 'compareText';
-var dependencies$2w = ['typed', 'matrix'];
+var dependencies$2w = ['typed', 'matrix', 'concat'];
 compareText$1.signature = 'any, any';
 var createCompareText = factory(name$2w, dependencies$2w, _ref => {
   var {
     typed,
-    matrix
+    matrix,
+    concat
   } = _ref;
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2w, compareText$1, matrixAlgorithmSuite({
     elop: compareText$1,
@@ -16544,13 +16685,14 @@ factory(name$2w, ['typed'], _ref2 => {
 });
 
 var name$2v = 'equal';
-var dependencies$2v = ['typed', 'matrix', 'equalScalar', 'DenseMatrix'];
+var dependencies$2v = ['typed', 'matrix', 'equalScalar', 'DenseMatrix', 'concat'];
 var createEqual = factory(name$2v, dependencies$2v, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16565,7 +16707,8 @@ var createEqual = factory(name$2v, dependencies$2v, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2v, createEqualNumber({
     typed,
@@ -16617,13 +16760,14 @@ var createEqualText = factory(name$2u, dependencies$2u, _ref => {
 });
 
 var name$2t = 'smaller';
-var dependencies$2t = ['typed', 'config', 'matrix', 'DenseMatrix'];
+var dependencies$2t = ['typed', 'config', 'matrix', 'DenseMatrix', 'concat'];
 var createSmaller = factory(name$2t, dependencies$2t, _ref => {
   var {
     typed,
     config,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16638,7 +16782,8 @@ var createSmaller = factory(name$2t, dependencies$2t, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var compareUnits = createCompareUnits({
     typed
@@ -16674,13 +16819,14 @@ var createSmallerNumber = factory(name$2t, ['typed', 'config'], _ref2 => {
 });
 
 var name$2s = 'smallerEq';
-var dependencies$2s = ['typed', 'config', 'matrix', 'DenseMatrix'];
+var dependencies$2s = ['typed', 'config', 'matrix', 'DenseMatrix', 'concat'];
 var createSmallerEq = factory(name$2s, dependencies$2s, _ref => {
   var {
     typed,
     config,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16695,7 +16841,8 @@ var createSmallerEq = factory(name$2s, dependencies$2s, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var compareUnits = createCompareUnits({
     typed
@@ -16731,13 +16878,14 @@ var createSmallerEqNumber = factory(name$2s, ['typed', 'config'], _ref2 => {
 });
 
 var name$2r = 'larger';
-var dependencies$2r = ['typed', 'config', 'matrix', 'DenseMatrix'];
+var dependencies$2r = ['typed', 'config', 'matrix', 'DenseMatrix', 'concat'];
 var createLarger = factory(name$2r, dependencies$2r, _ref => {
   var {
     typed,
     config,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16752,7 +16900,8 @@ var createLarger = factory(name$2r, dependencies$2r, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var compareUnits = createCompareUnits({
     typed
@@ -16788,13 +16937,14 @@ var createLargerNumber = factory(name$2r, ['typed', 'config'], _ref2 => {
 });
 
 var name$2q = 'largerEq';
-var dependencies$2q = ['typed', 'config', 'matrix', 'DenseMatrix'];
+var dependencies$2q = ['typed', 'config', 'matrix', 'DenseMatrix', 'concat'];
 var createLargerEq = factory(name$2q, dependencies$2q, _ref => {
   var {
     typed,
     config,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16809,7 +16959,8 @@ var createLargerEq = factory(name$2q, dependencies$2q, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   var compareUnits = createCompareUnits({
     typed
@@ -16883,14 +17034,15 @@ var createDeepEqual = factory(name$2p, dependencies$2p, _ref => {
 });
 
 var name$2o = 'unequal';
-var dependencies$2o = ['typed', 'config', 'equalScalar', 'matrix', 'DenseMatrix'];
+var dependencies$2o = ['typed', 'config', 'equalScalar', 'matrix', 'DenseMatrix', 'concat'];
 var createUnequal = factory(name$2o, dependencies$2o, _ref => {
   var {
     typed,
     config,
     equalScalar,
     matrix,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed
@@ -16905,7 +17057,8 @@ var createUnequal = factory(name$2o, dependencies$2o, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$2o, createUnequalNumber({
     typed,
@@ -21333,14 +21486,15 @@ var createAtan = factory(name$21, dependencies$21, _ref => {
 });
 
 var name$20 = 'atan2';
-var dependencies$20 = ['typed', 'matrix', 'equalScalar', 'BigNumber', 'DenseMatrix'];
+var dependencies$20 = ['typed', 'matrix', 'equalScalar', 'BigNumber', 'DenseMatrix', 'concat'];
 var createAtan2 = factory(name$20, dependencies$20, _ref => {
   var {
     typed,
     matrix,
     equalScalar,
     BigNumber,
-    DenseMatrix
+    DenseMatrix,
+    concat
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed,
@@ -21363,7 +21517,8 @@ var createAtan2 = factory(name$20, dependencies$20, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$20, {
     'number, number': Math.atan2,
@@ -21930,7 +22085,7 @@ var createSetUnion = factory(name$1F, dependencies$1F, _ref => {
 });
 
 var name$1E = 'add';
-var dependencies$1E = ['typed', 'matrix', 'addScalar', 'equalScalar', 'DenseMatrix', 'SparseMatrix'];
+var dependencies$1E = ['typed', 'matrix', 'addScalar', 'equalScalar', 'DenseMatrix', 'SparseMatrix', 'concat'];
 var createAdd = factory(name$1E, dependencies$1E, _ref => {
   var {
     typed,
@@ -21938,7 +22093,8 @@ var createAdd = factory(name$1E, dependencies$1E, _ref => {
     addScalar,
     equalScalar,
     DenseMatrix,
-    SparseMatrix
+    SparseMatrix,
+    concat
   } = _ref;
   var matAlgo01xDSid = createMatAlgo01xDSid({
     typed
@@ -21953,7 +22109,8 @@ var createAdd = factory(name$1E, dependencies$1E, _ref => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed,
-    matrix
+    matrix,
+    concat
   });
   return typed(name$1E, {
     'any, any': addScalar,
@@ -29675,7 +29832,7 @@ var partitionSelectDocs = {
   category: 'Matrix',
   syntax: ['partitionSelect(x, k)', 'partitionSelect(x, k, compare)'],
   description: 'Partition-based selection of an array or 1D matrix. Will find the kth smallest value, and mutates the input array. Uses Quickselect.',
-  examples: ['partitionSelect([5, 10, 1], 2)', 'partitionSelect(["C", "B", "A", "D"], 1)'],
+  examples: ['partitionSelect([5, 10, 1], 2)', 'partitionSelect(["C", "B", "A", "D"], 1, compareText)', 'arr = [5, 2, 1]', 'partitionSelect(arr, 0) # returns 1, arr is now: [1, 2, 5]', 'arr', 'partitionSelect(arr, 1, \'desc\') # returns 2, arr is now: [5, 2, 1]', 'arr'],
   seealso: ['sort']
 };
 
@@ -29747,7 +29904,7 @@ var sortDocs = {
   category: 'Matrix',
   syntax: ['sort(x)', 'sort(x, compare)'],
   description: 'Sort the items in a matrix. Compare can be a string "asc", "desc", "natural", or a custom sort function.',
-  examples: ['sort([5, 10, 1])', 'sort(["C", "B", "A", "D"])', 'sortByLength(a, b) = size(a)[1] - size(b)[1]', 'sort(["Langdon", "Tom", "Sara"], sortByLength)', 'sort(["10", "1", "2"], "natural")'],
+  examples: ['sort([5, 10, 1])', 'sort(["C", "B", "A", "D"], "natural")', 'sortByLength(a, b) = size(a)[1] - size(b)[1]', 'sort(["Langdon", "Tom", "Sara"], sortByLength)', 'sort(["10", "1", "2"], "natural")'],
   seealso: ['map', 'filter', 'forEach']
 };
 
@@ -31119,6 +31276,9 @@ var createDet = factory(name$$, dependencies$$, _ref => {
         case 1:
           if (size[0] === 1) {
             return clone$2(x.valueOf()[0]);
+          }
+          if (size[0] === 0) {
+            return 1;
           } else {
             throw new RangeError('Matrix must be square ' + '(size: ' + format$1(size) + ')');
           }
@@ -31128,6 +31288,9 @@ var createDet = factory(name$$, dependencies$$, _ref => {
             var cols = size[1];
             if (rows === cols) {
               return _det(x.clone().valueOf(), rows);
+            }
+            if (cols === 0) {
+              return 1;
             } else {
               throw new RangeError('Matrix must be square ' + '(size: ' + format$1(size) + ')');
             }
@@ -33427,10 +33590,11 @@ var createQuantileSeq = factory(name$J, dependencies$J, _ref => {
             return probArr;
           }
         }
-        if (Array.isArray(probOrN)) {
-          probArr = new Array(probOrN.length);
+        if (isCollection(probOrN)) {
+          var probOrNArr = probOrN.valueOf();
+          probArr = new Array(probOrNArr.length);
           for (var _i2 = 0; _i2 < probArr.length; ++_i2) {
-            var currProb = probOrN[_i2];
+            var currProb = probOrNArr[_i2];
             if (isNumber(currProb)) {
               if (currProb < 0 || currProb > 1) {
                 throw new Error('Probability must be between 0 and 1, inclusive');
@@ -36096,11 +36260,10 @@ var createSimplify = factory(name$q, dependencies$q, _ref => {
 });
 
 var name$p = 'simplifyConstant';
-var dependencies$p = ['typed', 'parse', 'config', 'mathWithTransform', 'matrix', '?fraction', '?bignumber', 'AccessorNode', 'ArrayNode', 'ConstantNode', 'FunctionNode', 'IndexNode', 'ObjectNode', 'OperatorNode', 'SymbolNode'];
+var dependencies$p = ['typed', 'config', 'mathWithTransform', 'matrix', '?fraction', '?bignumber', 'AccessorNode', 'ArrayNode', 'ConstantNode', 'FunctionNode', 'IndexNode', 'ObjectNode', 'OperatorNode', 'SymbolNode'];
 var createSimplifyConstant = factory(name$p, dependencies$p, _ref => {
   var {
     typed,
-    parse,
     config,
     mathWithTransform,
     matrix,
@@ -37699,7 +37862,7 @@ var createReplacer = factory(name$i, dependencies$i, () => {
   };
 });
 
-var version$1 = '11.5.1';
+var version$1 = '11.7.0';
 
 var createTrue = factory('true', [], () => true);
 var createFalse = factory('false', [], () => false);
@@ -38925,28 +39088,15 @@ var matrixFromFunction = createMatrixFromFunction({
   matrix,
   typed
 });
-var mod = createMod({
-  DenseMatrix,
-  equalScalar,
-  matrix,
-  typed
-});
-var nthRoot = createNthRoot({
-  BigNumber,
-  equalScalar,
-  matrix,
+var mode = createMode({
+  isNaN: isNaN$1,
+  isNumeric,
   typed
 });
 var numeric = createNumeric({
   bignumber,
   fraction,
   number
-});
-var or = createOr({
-  DenseMatrix,
-  equalScalar,
-  matrix,
-  typed
 });
 var prod = createProd({
   config: config$1,
@@ -38964,29 +39114,11 @@ var size = createSize({
   config: config$1,
   typed
 });
-var smaller = createSmaller({
-  DenseMatrix,
-  config: config$1,
-  matrix,
-  typed
-});
 var squeeze = createSqueeze({
   matrix,
   typed
 });
 var subset = createSubset({
-  matrix,
-  typed
-});
-var subtract = createSubtract({
-  DenseMatrix,
-  addScalar,
-  equalScalar,
-  matrix,
-  typed,
-  unaryMinus
-});
-var to = createTo({
   matrix,
   typed
 });
@@ -39006,21 +39138,9 @@ var zeros = createZeros({
   matrix,
   typed
 });
-var and = createAnd({
-  equalScalar,
-  matrix,
-  not,
-  typed,
-  zeros
-});
-var bitAnd = createBitAnd({
-  equalScalar,
-  matrix,
-  typed
-});
-var bitXor = createBitXor({
-  DenseMatrix,
-  matrix,
+var asin = createAsin({
+  Complex,
+  config: config$1,
   typed
 });
 var cbrt = createCbrt({
@@ -39032,19 +39152,6 @@ var cbrt = createCbrt({
   matrix,
   typed,
   unaryMinus
-});
-var compare = createCompare({
-  BigNumber,
-  DenseMatrix,
-  Fraction,
-  config: config$1,
-  equalScalar,
-  matrix,
-  typed
-});
-var compareText = createCompareText({
-  matrix,
-  typed
 });
 var concat = createConcat({
   isInteger,
@@ -39073,6 +39180,7 @@ var divideScalar = createDivideScalar({
 });
 var dotDivide = createDotDivide({
   DenseMatrix,
+  concat,
   divideScalar,
   equalScalar,
   matrix,
@@ -39080,18 +39188,9 @@ var dotDivide = createDotDivide({
 });
 var equal = createEqual({
   DenseMatrix,
+  concat,
   equalScalar,
   matrix,
-  typed
-});
-var fft = createFft({
-  addScalar,
-  divideScalar,
-  exp,
-  i,
-  matrix,
-  multiplyScalar,
-  tau,
   typed
 });
 var flatten = createFlatten({
@@ -39101,6 +39200,7 @@ var flatten = createFlatten({
 var gcd = createGcd({
   BigNumber,
   DenseMatrix,
+  concat,
   equalScalar,
   matrix,
   typed
@@ -39109,20 +39209,12 @@ var hasNumericValue = createHasNumericValue({
   isNumeric,
   typed
 });
-var hypot = createHypot({
-  abs,
-  addScalar,
-  divideScalar,
-  isPositive,
-  multiplyScalar,
-  smaller,
-  sqrt,
-  typed
-});
-var ifft = createIfft({
-  conj,
-  dotDivide,
-  fft,
+var identity = createIdentity({
+  BigNumber,
+  DenseMatrix,
+  SparseMatrix,
+  config: config$1,
+  matrix,
   typed
 });
 var kron = createKron({
@@ -39132,25 +39224,18 @@ var kron = createKron({
 });
 var largerEq = createLargerEq({
   DenseMatrix,
+  concat,
   config: config$1,
   matrix,
   typed
 });
 var leftShift = createLeftShift({
   DenseMatrix,
+  concat,
   equalScalar,
   matrix,
   typed,
   zeros
-});
-var lsolve = createLsolve({
-  DenseMatrix,
-  divideScalar,
-  equalScalar,
-  matrix,
-  multiplyScalar,
-  subtract,
-  typed
 });
 var matrixFromColumns = createMatrixFromColumns({
   flatten,
@@ -39158,21 +39243,18 @@ var matrixFromColumns = createMatrixFromColumns({
   size,
   typed
 });
-var min = createMin({
-  config: config$1,
-  numeric,
-  smaller,
+var mod = createMod({
+  DenseMatrix,
+  concat,
+  equalScalar,
+  matrix,
   typed
 });
-var mode = createMode({
-  isNaN: isNaN$1,
-  isNumeric,
-  typed
-});
-var nthRoots = createNthRoots({
-  Complex,
-  config: config$1,
-  divideScalar,
+var nthRoot = createNthRoot({
+  BigNumber,
+  concat,
+  equalScalar,
+  matrix,
   typed
 });
 var ones = createOnes({
@@ -39181,18 +39263,13 @@ var ones = createOnes({
   matrix,
   typed
 });
-var partitionSelect = createPartitionSelect({
-  compare,
-  isNaN: isNaN$1,
-  isNumeric,
-  typed
-});
 var resize = createResize({
   config: config$1,
   matrix
 });
 var rightArithShift = createRightArithShift({
   DenseMatrix,
+  concat,
   equalScalar,
   matrix,
   typed,
@@ -39206,30 +39283,29 @@ var round = createRound({
   typed,
   zeros
 });
-var smallerEq = createSmallerEq({
+var smaller = createSmaller({
   DenseMatrix,
+  concat,
   config: config$1,
+  matrix,
+  typed
+});
+var to = createTo({
+  concat,
   matrix,
   typed
 });
 var unequal = createUnequal({
   DenseMatrix,
+  concat,
   config: config$1,
   equalScalar,
   matrix,
   typed
 });
-var usolve = createUsolve({
-  DenseMatrix,
-  divideScalar,
-  equalScalar,
-  matrix,
-  multiplyScalar,
-  subtract,
-  typed
-});
 var xor = createXor({
   DenseMatrix,
+  concat,
   matrix,
   typed
 });
@@ -39237,20 +39313,20 @@ var add = createAdd({
   DenseMatrix,
   SparseMatrix,
   addScalar,
+  concat,
   equalScalar,
   matrix,
   typed
 });
-var atan2 = createAtan2({
-  BigNumber,
-  DenseMatrix,
+var bitAnd = createBitAnd({
+  concat,
   equalScalar,
   matrix,
   typed
 });
-var bitOr = createBitOr({
+var bitXor = createBitXor({
   DenseMatrix,
-  equalScalar,
+  concat,
   matrix,
   typed
 });
@@ -39263,8 +39339,19 @@ var catalan = createCatalan({
   multiplyScalar,
   typed
 });
-var compareNatural = createCompareNatural({
-  compare,
+var compare = createCompare({
+  BigNumber,
+  DenseMatrix,
+  Fraction,
+  concat,
+  config: config$1,
+  equalScalar,
+  matrix,
+  typed
+});
+var compareText = createCompareText({
+  concat,
+  matrix,
   typed
 });
 var cumsum = createCumSum({
@@ -39274,12 +39361,6 @@ var cumsum = createCumSum({
 });
 var deepEqual = createDeepEqual({
   equal,
-  typed
-});
-var diff = createDiff({
-  matrix,
-  number,
-  subtract,
   typed
 });
 var dot = createDot({
@@ -39303,13 +39384,22 @@ var floor = createFloor({
   typed,
   zeros
 });
-var identity = createIdentity({
-  BigNumber,
-  DenseMatrix,
-  SparseMatrix,
-  config: config$1,
-  matrix,
+var hypot = createHypot({
+  abs,
+  addScalar,
+  divideScalar,
+  isPositive,
+  multiplyScalar,
+  smaller,
+  sqrt,
   typed
+});
+var ImmutableDenseMatrix = createImmutableDenseMatrixClass({
+  DenseMatrix,
+  smaller
+});
+var Index = createIndexClass({
+  ImmutableDenseMatrix
 });
 var invmod = createInvmod({
   BigNumber,
@@ -39324,6 +39414,7 @@ var invmod = createInvmod({
 });
 var larger = createLarger({
   DenseMatrix,
+  concat,
   config: config$1,
   matrix,
   typed
@@ -39334,19 +39425,16 @@ var log = createLog({
   divideScalar,
   typed
 });
-var lsolveAll = createLsolveAll({
-  DenseMatrix,
-  divideScalar,
-  equalScalar,
-  matrix,
-  multiplyScalar,
-  subtract,
-  typed
-});
 var matrixFromRows = createMatrixFromRows({
   flatten,
   matrix,
   size,
+  typed
+});
+var min = createMin({
+  config: config$1,
+  numeric,
+  smaller,
   typed
 });
 var multiply = createMultiply({
@@ -39355,6 +39443,208 @@ var multiply = createMultiply({
   equalScalar,
   matrix,
   multiplyScalar,
+  typed
+});
+var nthRoots = createNthRoots({
+  Complex,
+  config: config$1,
+  divideScalar,
+  typed
+});
+var or = createOr({
+  DenseMatrix,
+  concat,
+  equalScalar,
+  matrix,
+  typed
+});
+var partitionSelect = createPartitionSelect({
+  compare,
+  isNaN: isNaN$1,
+  isNumeric,
+  typed
+});
+var quantileSeq = createQuantileSeq({
+  add,
+  compare,
+  multiply,
+  partitionSelect,
+  typed
+});
+var rightLogShift = createRightLogShift({
+  DenseMatrix,
+  concat,
+  equalScalar,
+  matrix,
+  typed,
+  zeros
+});
+var smallerEq = createSmallerEq({
+  DenseMatrix,
+  concat,
+  config: config$1,
+  matrix,
+  typed
+});
+var subtract = createSubtract({
+  DenseMatrix,
+  addScalar,
+  concat,
+  equalScalar,
+  matrix,
+  typed,
+  unaryMinus
+});
+var trace = createTrace({
+  add,
+  matrix,
+  typed
+});
+var usolve = createUsolve({
+  DenseMatrix,
+  divideScalar,
+  equalScalar,
+  matrix,
+  multiplyScalar,
+  subtract,
+  typed
+});
+var and = createAnd({
+  concat,
+  equalScalar,
+  matrix,
+  not,
+  typed,
+  zeros
+});
+var bitOr = createBitOr({
+  DenseMatrix,
+  concat,
+  equalScalar,
+  matrix,
+  typed
+});
+var ceil = createCeil({
+  DenseMatrix,
+  config: config$1,
+  equalScalar,
+  matrix,
+  round,
+  typed,
+  zeros
+});
+var compareNatural = createCompareNatural({
+  compare,
+  typed
+});
+var composition = createComposition({
+  addScalar,
+  combinations,
+  isInteger,
+  isNegative,
+  isPositive,
+  larger,
+  typed
+});
+var cross = createCross({
+  matrix,
+  multiply,
+  subtract,
+  typed
+});
+var det = createDet({
+  divideScalar,
+  isZero,
+  matrix,
+  multiply,
+  subtract,
+  typed,
+  unaryMinus
+});
+var diff = createDiff({
+  matrix,
+  number,
+  subtract,
+  typed
+});
+var distance = createDistance({
+  abs,
+  addScalar,
+  divideScalar,
+  multiplyScalar,
+  sqrt,
+  subtract,
+  typed,
+  unaryMinus
+});
+var dotMultiply = createDotMultiply({
+  concat,
+  equalScalar,
+  matrix,
+  multiplyScalar,
+  typed
+});
+var FibonacciHeap = createFibonacciHeapClass({
+  larger,
+  smaller
+});
+var fix = createFix({
+  Complex,
+  DenseMatrix,
+  ceil,
+  equalScalar,
+  floor,
+  matrix,
+  typed,
+  zeros
+});
+var index = createIndex({
+  Index,
+  typed
+});
+var intersect = createIntersect({
+  abs,
+  add,
+  addScalar,
+  config: config$1,
+  divideScalar,
+  equalScalar,
+  flatten,
+  isNumeric,
+  isZero,
+  matrix,
+  multiply,
+  multiplyScalar,
+  smaller,
+  subtract,
+  typed
+});
+var lcm = createLcm({
+  concat,
+  equalScalar,
+  matrix,
+  typed
+});
+var log1p = createLog1p({
+  Complex,
+  config: config$1,
+  divideScalar,
+  log,
+  typed
+});
+var lsolve = createLsolve({
+  DenseMatrix,
+  divideScalar,
+  equalScalar,
+  matrix,
+  multiplyScalar,
+  subtract,
+  typed
+});
+var max = createMax({
+  config: config$1,
+  larger,
+  numeric,
   typed
 });
 var qr = createQr({
@@ -39382,166 +39672,6 @@ var range = createRange({
   largerEq,
   smaller,
   smallerEq,
-  typed
-});
-var rightLogShift = createRightLogShift({
-  DenseMatrix,
-  equalScalar,
-  matrix,
-  typed,
-  zeros
-});
-var setSize = createSetSize({
-  compareNatural,
-  typed
-});
-var slu = createSlu({
-  SparseMatrix,
-  abs,
-  add,
-  divideScalar,
-  larger,
-  largerEq,
-  multiply,
-  subtract,
-  transpose,
-  typed
-});
-var sum = createSum({
-  add,
-  config: config$1,
-  numeric,
-  typed
-});
-var trace = createTrace({
-  add,
-  matrix,
-  typed
-});
-var usolveAll = createUsolveAll({
-  DenseMatrix,
-  divideScalar,
-  equalScalar,
-  matrix,
-  multiplyScalar,
-  subtract,
-  typed
-});
-var asin = createAsin({
-  Complex,
-  config: config$1,
-  typed
-});
-var ceil = createCeil({
-  DenseMatrix,
-  config: config$1,
-  equalScalar,
-  matrix,
-  round,
-  typed,
-  zeros
-});
-var composition = createComposition({
-  addScalar,
-  combinations,
-  isInteger,
-  isNegative,
-  isPositive,
-  larger,
-  typed
-});
-var cross = createCross({
-  matrix,
-  multiply,
-  subtract,
-  typed
-});
-var det = createDet({
-  divideScalar,
-  isZero,
-  matrix,
-  multiply,
-  subtract,
-  typed,
-  unaryMinus
-});
-var distance = createDistance({
-  abs,
-  addScalar,
-  divideScalar,
-  multiplyScalar,
-  sqrt,
-  subtract,
-  typed,
-  unaryMinus
-});
-var dotMultiply = createDotMultiply({
-  equalScalar,
-  matrix,
-  multiplyScalar,
-  typed
-});
-var FibonacciHeap = createFibonacciHeapClass({
-  larger,
-  smaller
-});
-var fix = createFix({
-  Complex,
-  DenseMatrix,
-  ceil,
-  equalScalar,
-  floor,
-  matrix,
-  typed,
-  zeros
-});
-var ImmutableDenseMatrix = createImmutableDenseMatrixClass({
-  DenseMatrix,
-  smaller
-});
-var Index = createIndexClass({
-  ImmutableDenseMatrix
-});
-var intersect = createIntersect({
-  abs,
-  add,
-  addScalar,
-  config: config$1,
-  divideScalar,
-  equalScalar,
-  flatten,
-  isNumeric,
-  isZero,
-  matrix,
-  multiply,
-  multiplyScalar,
-  smaller,
-  subtract,
-  typed
-});
-var lcm = createLcm({
-  equalScalar,
-  matrix,
-  typed
-});
-var log1p = createLog1p({
-  Complex,
-  config: config$1,
-  divideScalar,
-  log,
-  typed
-});
-var max = createMax({
-  config: config$1,
-  larger,
-  numeric,
-  typed
-});
-var quantileSeq = createQuantileSeq({
-  add,
-  compare,
-  multiply,
-  partitionSelect,
   typed
 });
 var row = createRow({
@@ -39580,9 +39710,43 @@ var setPowerset = createSetPowerset({
   subset,
   typed
 });
-var sort = createSort({
-  compare,
-  compareNatural,
+var slu = createSlu({
+  SparseMatrix,
+  abs,
+  add,
+  divideScalar,
+  larger,
+  largerEq,
+  multiply,
+  subtract,
+  transpose,
+  typed
+});
+var Spa = createSpaClass({
+  FibonacciHeap,
+  addScalar,
+  equalScalar
+});
+var sum = createSum({
+  add,
+  config: config$1,
+  numeric,
+  typed
+});
+var usolveAll = createUsolveAll({
+  DenseMatrix,
+  divideScalar,
+  equalScalar,
+  matrix,
+  multiplyScalar,
+  subtract,
+  typed
+});
+var atan2 = createAtan2({
+  BigNumber,
+  DenseMatrix,
+  concat,
+  equalScalar,
   matrix,
   typed
 });
@@ -39592,8 +39756,42 @@ var column = createColumn({
   range,
   typed
 });
-var index = createIndex({
+var lsolveAll = createLsolveAll({
+  DenseMatrix,
+  divideScalar,
+  equalScalar,
+  matrix,
+  multiplyScalar,
+  subtract,
+  typed
+});
+var setDifference = createSetDifference({
+  DenseMatrix,
   Index,
+  compareNatural,
+  size,
+  subset,
+  typed
+});
+var setMultiplicity = createSetMultiplicity({
+  Index,
+  compareNatural,
+  size,
+  subset,
+  typed
+});
+var setSymDifference = createSetSymDifference({
+  Index,
+  concat,
+  setDifference,
+  size,
+  subset,
+  typed
+});
+var sort = createSort({
+  compare,
+  compareNatural,
+  matrix,
   typed
 });
 var inv = createInv({
@@ -39604,6 +39802,21 @@ var inv = createInv({
   identity,
   matrix,
   multiply,
+  typed,
+  unaryMinus
+});
+var lup = createLup({
+  DenseMatrix,
+  Spa,
+  SparseMatrix,
+  abs,
+  addScalar,
+  divideScalar,
+  equalScalar,
+  larger,
+  matrix,
+  multiplyScalar,
+  subtract,
   typed,
   unaryMinus
 });
@@ -39632,7 +39845,7 @@ var pow = createPow({
   number,
   typed
 });
-var setDifference = createSetDifference({
+var setIntersect = createSetIntersect({
   DenseMatrix,
   Index,
   compareNatural,
@@ -39640,17 +39853,14 @@ var setDifference = createSetDifference({
   subset,
   typed
 });
-var setMultiplicity = createSetMultiplicity({
+var setUnion = createSetUnion({
   Index,
-  compareNatural,
+  concat,
+  setIntersect,
+  setSymDifference,
   size,
   subset,
   typed
-});
-var Spa = createSpaClass({
-  FibonacciHeap,
-  addScalar,
-  equalScalar
 });
 var sqrtm = createSqrtm({
   abs,
@@ -39724,6 +39934,7 @@ var deuteronMass = createDeuteronMass({
 });
 var dotPow = createDotPow({
   DenseMatrix,
+  concat,
   equalScalar,
   matrix,
   pow,
@@ -39752,10 +39963,20 @@ var faraday = createFaraday({
   Unit,
   config: config$1
 });
-var firstRadiation = createFirstRadiation({
-  BigNumber,
-  Unit,
-  config: config$1
+var fft = createFft({
+  addScalar,
+  ceil,
+  conj,
+  divideScalar,
+  dotDivide,
+  exp,
+  i,
+  log2,
+  matrix,
+  multiplyScalar,
+  pow,
+  tau,
+  typed
 });
 var gamma = createGamma({
   BigNumber,
@@ -39774,6 +39995,12 @@ var hartreeEnergy = createHartreeEnergy({
   BigNumber,
   Unit,
   config: config$1
+});
+var ifft = createIfft({
+  conj,
+  dotDivide,
+  fft,
+  typed
 });
 var klitzing = createKlitzing({
   BigNumber,
@@ -39845,14 +40072,6 @@ var secondRadiation = createSecondRadiation({
   Unit,
   config: config$1
 });
-var setSymDifference = createSetSymDifference({
-  Index,
-  concat,
-  setDifference,
-  size,
-  subset,
-  typed
-});
 var speedOfLight = createSpeedOfLight({
   BigNumber,
   Unit,
@@ -39900,7 +40119,12 @@ var factorial = createFactorial({
   gamma,
   typed
 });
-var gravity = createGravity({
+var firstRadiation = createFirstRadiation({
+  BigNumber,
+  Unit,
+  config: config$1
+});
+var gasConstant = createGasConstant({
   BigNumber,
   Unit,
   config: config$1
@@ -39910,20 +40134,14 @@ var inverseConductanceQuantum = createInverseConductanceQuantum({
   Unit,
   config: config$1
 });
-var lup = createLup({
+var lusolve = createLusolve({
   DenseMatrix,
-  Spa,
-  SparseMatrix,
-  abs,
-  addScalar,
-  divideScalar,
-  equalScalar,
-  larger,
+  lsolve,
+  lup,
   matrix,
-  multiplyScalar,
-  subtract,
+  slu,
   typed,
-  unaryMinus
+  usolve
 });
 var magneticFluxQuantum = createMagneticFluxQuantum({
   BigNumber,
@@ -39968,12 +40186,8 @@ var polynomialRoot = createPolynomialRoot({
   typed,
   unaryMinus
 });
-var setIntersect = createSetIntersect({
-  DenseMatrix,
-  Index,
+var setSize = createSetSize({
   compareNatural,
-  size,
-  subset,
   typed
 });
 var stirlingS2 = createStirlingS2({
@@ -40040,6 +40254,22 @@ var fermiCoupling = createFermiCoupling({
   Unit,
   config: config$1
 });
+var gravity = createGravity({
+  BigNumber,
+  Unit,
+  config: config$1
+});
+var kldivergence = createKldivergence({
+  divide,
+  dotDivide,
+  isNumeric,
+  log,
+  map,
+  matrix,
+  multiply,
+  sum,
+  typed
+});
 var mean = createMean({
   add,
   divide,
@@ -40060,15 +40290,6 @@ var quantumOfCirculation = createQuantumOfCirculation({
   Unit,
   config: config$1
 });
-var setUnion = createSetUnion({
-  Index,
-  concat,
-  setIntersect,
-  setSymDifference,
-  size,
-  subset,
-  typed
-});
 var variance = createVariance({
   add,
   apply,
@@ -40083,15 +40304,6 @@ var classicalElectronRadius = createClassicalElectronRadius({
   Unit,
   config: config$1
 });
-var lusolve = createLusolve({
-  DenseMatrix,
-  lsolve,
-  lup,
-  matrix,
-  slu,
-  typed,
-  usolve
-});
 var median = createMedian({
   add,
   compare,
@@ -40099,23 +40311,10 @@ var median = createMedian({
   partitionSelect,
   typed
 });
-var kldivergence = createKldivergence({
-  divide,
-  dotDivide,
-  isNumeric,
-  log,
-  map,
-  matrix,
-  multiply,
-  sum,
-  typed
-});
-var mad = createMad({
-  abs,
-  map,
-  median,
-  subtract,
-  typed
+var planckTime = createPlanckTime({
+  BigNumber,
+  Unit,
+  config: config$1
 });
 var std = createStd({
   map,
@@ -40123,10 +40322,12 @@ var std = createStd({
   typed,
   variance
 });
-var gasConstant = createGasConstant({
-  BigNumber,
-  Unit,
-  config: config$1
+var mad = createMad({
+  abs,
+  map,
+  median,
+  subtract,
+  typed
 });
 var norm = createNorm({
   abs,
@@ -40157,10 +40358,10 @@ var rotationMatrix = createRotationMatrix({
   typed,
   unaryMinus
 });
-var planckTime = createPlanckTime({
-  BigNumber,
-  Unit,
-  config: config$1
+var rotate = createRotate({
+  multiply,
+  rotationMatrix,
+  typed
 });
 var schur = createSchur({
   identity,
@@ -40169,11 +40370,6 @@ var schur = createSchur({
   norm,
   qr,
   subtract,
-  typed
-});
-var rotate = createRotate({
-  multiply,
-  rotationMatrix,
   typed
 });
 var sylvester = createSylvester({
@@ -40254,14 +40450,14 @@ var AccessorNode = createAccessorNode({
   Node,
   subset
 });
+var IndexNode = createIndexNode({
+  Node,
+  size
+});
 var AssignmentNode = createAssignmentNode({
   matrix,
   Node,
   subset
-});
-var IndexNode = createIndexNode({
-  Node,
-  size
 });
 var SymbolNode = createSymbolNode({
   Unit,
@@ -40315,19 +40511,21 @@ var simplifyConstant = createSimplifyConstant({
   config: config$1,
   mathWithTransform,
   matrix,
-  parse,
   typed
 });
 var compile = createCompile({
   parse,
   typed
 });
+var evaluate = createEvaluate({
+  parse,
+  typed
+});
 var Help = createHelpClass({
   parse
 });
-var leafCount = createLeafCount({
-  parse,
-  typed
+var Parser = createParserClass({
+  evaluate
 });
 var simplifyCore = createSimplifyCore({
   AccessorNode,
@@ -40349,17 +40547,10 @@ var simplifyCore = createSimplifyCore({
   subtract,
   typed
 });
-var evaluate = createEvaluate({
-  parse,
-  typed
-});
 var help = createHelp({
   Help,
   mathWithTransform,
   typed
-});
-var Parser = createParserClass({
-  evaluate
 });
 var simplify = createSimplify({
   bignumber,
@@ -40411,6 +40602,10 @@ var derivative = createDerivative({
 });
 var parser = createParser({
   Parser,
+  typed
+});
+var leafCount = createLeafCount({
+  parse,
   typed
 });
 var rationalize = createRationalize({
@@ -40548,27 +40743,18 @@ _extends$1(math, {
   isNumeric,
   matrix,
   matrixFromFunction,
-  mod,
-  nthRoot,
+  mode,
   numeric,
-  or,
   prod,
   reshape,
   size,
-  smaller,
   squeeze,
   subset,
-  subtract,
-  to,
   transpose,
   xgcd,
   zeros,
-  and,
-  bitAnd,
-  bitXor,
+  asin,
   cbrt,
-  compare,
-  compareText,
   concat,
   count,
   ctranspose,
@@ -40576,81 +40762,91 @@ _extends$1(math, {
   divideScalar,
   dotDivide,
   equal,
-  fft,
   flatten,
   gcd,
   hasNumericValue,
-  hypot,
-  ifft,
+  identity,
   kron,
   largerEq,
   leftShift,
-  lsolve,
   matrixFromColumns,
-  min,
-  mode,
-  nthRoots,
+  mod,
+  nthRoot,
   ones,
-  partitionSelect,
   resize,
   rightArithShift,
   round,
-  smallerEq,
+  smaller,
+  to,
   unequal,
-  usolve,
   xor,
   add,
-  atan2,
-  bitOr,
+  bitAnd,
+  bitXor,
   catalan,
-  compareNatural,
+  compare,
+  compareText,
   cumsum,
   deepEqual,
-  diff,
   dot,
   equalText,
   floor,
-  identity,
+  hypot,
   invmod,
   larger,
   log,
-  lsolveAll,
   matrixFromRows,
+  min,
   multiply,
-  qr,
-  range,
+  nthRoots,
+  or,
+  partitionSelect,
+  quantileSeq,
   rightLogShift,
-  setSize,
-  slu,
-  sum,
+  smallerEq,
+  subtract,
   trace,
-  usolveAll,
-  asin,
+  usolve,
+  and,
+  bitOr,
   ceil,
+  compareNatural,
   composition,
   cross,
   det,
+  diff,
   distance,
   dotMultiply,
   fix,
+  index,
   intersect,
   lcm,
   log1p,
+  lsolve,
   max,
-  quantileSeq,
+  qr,
+  range,
   row,
   setCartesian,
   setDistinct,
   setIsSubset,
   setPowerset,
-  sort,
+  slu,
+  sum,
+  usolveAll,
+  atan2,
   column,
-  index,
-  inv,
-  pinv,
-  pow,
+  lsolveAll,
   setDifference,
   setMultiplicity,
+  setSymDifference,
+  sort,
+  inv,
+  lup,
+  pinv,
+  pow,
+  setIntersect,
+  setUnion,
   sqrtm,
   vacuumImpedance,
   wienDisplacement,
@@ -40665,10 +40861,11 @@ _extends$1(math, {
   elementaryCharge,
   expm,
   faraday,
-  firstRadiation,
+  fft,
   gamma,
   gravitationConstant,
   hartreeEnergy,
+  ifft,
   klitzing,
   loschmidt,
   magneticConstant,
@@ -40683,7 +40880,6 @@ _extends$1(math, {
   reducedPlanckConstant,
   rydberg,
   secondRadiation,
-  setSymDifference,
   speedOfLight,
   stefanBoltzmann,
   thomsonCrossSection,
@@ -40693,52 +40889,51 @@ _extends$1(math, {
   divide,
   electronMass,
   factorial,
-  gravity,
+  firstRadiation,
+  gasConstant,
   inverseConductanceQuantum,
-  lup,
+  lusolve,
   magneticFluxQuantum,
   molarMassC12,
   multinomial,
-  parse,
   permutations,
   planckMass,
   polynomialRoot,
-  resolve,
-  setIntersect,
-  simplifyConstant,
+  setSize,
   stirlingS2,
   unit,
   bellNumbers,
-  compile,
   eigs,
   fermiCoupling,
-  leafCount,
+  gravity,
+  kldivergence,
   mean,
   molarVolume,
   planckConstant,
   quantumOfCirculation,
-  setUnion,
-  simplifyCore,
   variance,
   classicalElectronRadius,
-  evaluate,
-  help,
-  lusolve,
   median,
+  parse,
+  planckTime,
+  resolve,
+  simplifyConstant,
+  std,
+  compile,
+  evaluate,
+  mad,
+  simplifyCore,
+  help,
+  norm,
+  rotationMatrix,
   simplify,
   symbolicEqual,
   derivative,
-  kldivergence,
-  mad,
   parser,
-  rationalize,
-  std,
-  gasConstant,
-  norm,
-  rotationMatrix,
-  planckTime,
-  schur,
   rotate,
+  leafCount,
+  rationalize,
+  schur,
   sylvester,
   lyap,
   config: config$1
@@ -40757,13 +40952,6 @@ _extends$1(mathWithTransform, math, {
     isInteger,
     typed
   }),
-  diff: createDiffTransform({
-    bignumber,
-    matrix,
-    number,
-    subtract,
-    typed
-  }),
   subset: createSubsetTransform({
     matrix,
     typed
@@ -40779,11 +40967,32 @@ _extends$1(mathWithTransform, math, {
     numeric,
     typed
   }),
+  sum: createSumTransform({
+    add,
+    config: config$1,
+    numeric,
+    typed
+  }),
   min: createMinTransform({
     config: config$1,
     numeric,
     smaller,
     typed
+  }),
+  cumsum: createCumSumTransform({
+    add,
+    typed,
+    unaryPlus
+  }),
+  diff: createDiffTransform({
+    bignumber,
+    matrix,
+    number,
+    subtract,
+    typed
+  }),
+  index: createIndexTransform({
+    Index
   }),
   range: createRangeTransform({
     bignumber,
@@ -40794,17 +41003,6 @@ _extends$1(mathWithTransform, math, {
     smaller,
     smallerEq,
     typed
-  }),
-  sum: createSumTransform({
-    add,
-    config: config$1,
-    numeric,
-    typed
-  }),
-  cumsum: createCumSumTransform({
-    add,
-    typed,
-    unaryPlus
   }),
   row: createRowTransform({
     Index,
@@ -40817,9 +41015,6 @@ _extends$1(mathWithTransform, math, {
     matrix,
     range,
     typed
-  }),
-  index: createIndexTransform({
-    Index
   }),
   mean: createMeanTransform({
     add,
@@ -40864,11 +41059,11 @@ _extends$1(classes, {
   FunctionAssignmentNode,
   SparseMatrix,
   AccessorNode,
-  AssignmentNode,
   IndexNode,
-  FibonacciHeap,
+  AssignmentNode,
   ImmutableDenseMatrix,
   Index,
+  FibonacciHeap,
   Spa,
   Unit,
   SymbolNode,

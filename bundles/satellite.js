@@ -15,6 +15,7 @@ var TabType;
     TabType[TabType["Mechanism"] = 10] = "Mechanism";
     TabType[TabType["Points"] = 11] = "Points";
     TabType[TabType["Metadata"] = 12] = "Metadata";
+    TabType[TabType["MotorChecker"] = 13] = "MotorChecker";
 })(TabType || (TabType = {}));
 var TabType$1 = TabType;
 [
@@ -54,6 +55,8 @@ function getTabIcon(type) {
             return "🔵";
         case TabType.Metadata:
             return "🔍";
+        case TabType.MotorChecker:
+            return "🏍️";
         default:
             return "";
     }

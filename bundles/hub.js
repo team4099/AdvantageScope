@@ -621,19 +621,17 @@ function convertWithPreset(value, preset) {
 
 const ENABLED_KEYS = [
     "/DriverStation/Enabled",
-    "/AdvantageKit/DriverStation/Enabled",
+    "NT:/AdvantageKit/DriverStation/Enabled",
     "DS:enabled",
-    "/FMSInfo/FMSControlData",
     "NT:/FMSInfo/FMSControlData",
     "/DSLog/Status/DSDisabled"
 ];
 const ALLIANCE_KEYS = [
     "/DriverStation/AllianceStation",
-    "/AdvantageKit/DriverStation/AllianceStation",
-    "/FMSInfo/IsRedAlliance",
+    "NT:/AdvantageKit/DriverStation/AllianceStation",
     "NT:/FMSInfo/IsRedAlliance"
 ];
-const JOYSTICK_KEYS = ["/DriverStation/Joystick", "/AdvantageKit/DriverStation/Joystick", "DS:joystick"];
+const JOYSTICK_KEYS = ["/DriverStation/Joystick", "NT:/AdvantageKit/DriverStation/Joystick", "DS:joystick"];
 const TYPE_KEY = ".type";
 const MECHANISM_KEY = "Mechanism2d";
 function getLogValueText(value, type) {
@@ -1993,6 +1991,7 @@ const Schemas = new Map();
 Schemas.set("rawBytes", process);
 
 class NT4Source extends LiveDataSource {
+    WPILOG_PREFIX = "NT:";
     AKIT_PREFIX = "/AdvantageKit";
     akitMode;
     log = null;
@@ -2052,7 +2051,7 @@ class NT4Source extends LiveDataSource {
                                     activeFields.add(this.AKIT_PREFIX + subscribeKey);
                                 }
                                 else {
-                                    activeFields.add(subscribeKey);
+                                    activeFields.add(subscribeKey.slice(this.WPILOG_PREFIX.length));
                                 }
                             }
                         });
@@ -2237,7 +2236,7 @@ class NT4Source extends LiveDataSource {
             return topic.name.slice(this.AKIT_PREFIX.length);
         }
         else {
-            return topic.name;
+            return this.WPILOG_PREFIX + topic.name;
         }
     }
     getLogType(ntType) {
@@ -2829,6 +2828,10 @@ class Sidebar {
             }
             this.selectGroupClearCallbacks = [];
             let tree = window.log.getFieldTree();
+            let rootKeys = Object.keys(tree);
+            if (rootKeys.length == 1 && tree[rootKeys[0]].fullKey === null) {
+                tree = tree[rootKeys[0]].children;
+            }
             Object.keys(tree)
                 .filter((key) => !this.HIDDEN_KEYS.includes(key))
                 .sort((a, b) => this.sortKeys(a, b, true))
@@ -3032,6 +3035,7 @@ var TabType;
     TabType[TabType["Mechanism"] = 10] = "Mechanism";
     TabType[TabType["Points"] = 11] = "Points";
     TabType[TabType["Metadata"] = 12] = "Metadata";
+    TabType[TabType["MotorChecker"] = 13] = "MotorChecker";
 })(TabType || (TabType = {}));
 var TabType$1 = TabType;
 const TIMELINE_VIZ_TYPES = [
@@ -3071,6 +3075,8 @@ function getDefaultTabTitle(type) {
             return "Points";
         case TabType.Metadata:
             return "Metadata";
+        case TabType.MotorChecker:
+            return "MotorChecker";
         default:
             return "";
     }
@@ -3103,6 +3109,8 @@ function getTabIcon(type) {
             return "🔵";
         case TabType.Metadata:
             return "🔍";
+        case TabType.MotorChecker:
+            return "🏍️";
         default:
             return "";
     }
@@ -9613,9 +9621,12 @@ let JoysticksController$1 = class JoysticksController extends TimelineVizControl
     }
     getAdditionalActiveFields() {
         let activeFields = [];
-        this.CONFIG_IDS.forEach((element) => {
+        this.CONFIG_IDS.forEach((element, index) => {
             let joystickId = Number(element.value);
-            activeFields = activeFields.concat(JOYSTICK_KEYS.map((key) => key + joystickId.toString()));
+            let joystickLayout = this.CONFIG_LAYOUTS[index].value;
+            if (joystickLayout !== "None") {
+                activeFields = activeFields.concat(JOYSTICK_KEYS.map((key) => key + joystickId.toString()));
+            }
         });
         return activeFields;
     }
@@ -10755,6 +10766,167 @@ class MetadataController {
         let showTable = keys.length > 0;
         this.NO_DATA_ALERT.hidden = showTable;
         this.TABLE_CONTAINER.hidden = !showTable;
+    }
+}
+
+class MotorCheckerController {
+    NO_DATA_ALERT;
+    MOTOR_CONTAINER;
+    lastDataString = "";
+    uiTree = {};
+    constructor(content) {
+        this.NO_DATA_ALERT = content.getElementsByClassName("tab-prompt")[0];
+        this.MOTOR_CONTAINER = content.getElementsByClassName("motor-checker-table-container")[0];
+        this.refresh();
+    }
+    saveState() {
+        return { type: TabType$1.MotorChecker };
+    }
+    restoreState(state) { }
+    getActiveFields() {
+        return ["/RealOutputs", "/AdvantageKit/RealOutputs"];
+    }
+    periodic() {
+        let ntKeys = Object.keys(this.uiTree);
+        for (const key of ntKeys) {
+            let keyType = window.log.getType(key);
+            if (keyType == LoggableType$1.Number) {
+                let ntValue = (window.log.getNumber(key, Infinity, Infinity)?.values.at(-1) || 0.0).toFixed(2);
+                this.uiTree[key](ntValue);
+            }
+            else if (keyType == LoggableType$1.String) {
+                let ntValue = (window.log.getString(key, Infinity, Infinity)?.values.at(-1) || "");
+                console.log(ntValue);
+                this.uiTree[key](ntValue);
+            }
+            else if (keyType == LoggableType$1.StringArray) {
+                let ntValue = window.log.getStringArray(key, Infinity, Infinity)?.values.at(-1) || [];
+                this.uiTree[key](ntValue);
+            }
+        }
+        console.log("_________");
+    }
+    refresh() {
+        window.log.getFieldKeys();
+        let tree = window.log.getFieldTree();
+        let data = {};
+        if ("RealOutputs" in tree) {
+            let realOutputTable = tree["RealOutputs"].children;
+            if ("MotorChecker" in realOutputTable) {
+                data = realOutputTable["MotorChecker"];
+            }
+        }
+        if ("NT" in tree) {
+            let ntTable = tree["NT"].children;
+            if ("AdvantageKit" in ntTable) {
+                let akitTable = ntTable["AdvantageKit"].children;
+                if ("RealOutputs" in akitTable) {
+                    let realOutputTable = akitTable["RealOutputs"].children;
+                    if ("MotorChecker" in realOutputTable) {
+                        data = realOutputTable["MotorChecker"];
+                    }
+                }
+            }
+        }
+        if ("AdvantageKit" in tree) {
+            let akitTable = tree["AdvantageKit"].children;
+            if ("RealOutputs" in akitTable) {
+                let realOutputTable = akitTable["RealOutputs"].children;
+                if ("MotorChecker" in realOutputTable) {
+                    data = realOutputTable["MotorChecker"];
+                }
+            }
+        }
+        let dataString = JSON.stringify(data);
+        if (dataString === this.lastDataString || Object.keys(data).length == 0) {
+            return;
+        }
+        this.lastDataString = dataString;
+        while (this.MOTOR_CONTAINER.childElementCount > 1) {
+            this.MOTOR_CONTAINER.removeChild(this.MOTOR_CONTAINER.lastChild);
+        }
+        data = data["children"];
+        this.uiTree = {};
+        if ("subsystemNames" in data) {
+            let subsystems = window.log.getStringArray(data["subsystemNames"]["fullKey"], 0, Object.keys(data).length - 2);
+            console.log(subsystems);
+            for (const subsystemID of subsystems?.values[0] || []) {
+                let subsystem = document.createElement("div");
+                subsystem.classList.add("rounded-lg", "bg-black", "h-58", "mr-10", "p-4");
+                let subsystemTitle = document.createElement("h1");
+                subsystemTitle.classList.add("text-white", "mb-4", "text-xl", "font-semibold");
+                subsystemTitle.innerText = subsystemID;
+                subsystem.appendChild(subsystemTitle);
+                let subsystemMotorCards = document.createElement("div");
+                subsystemMotorCards.classList.add("flex", "flex-row", "gap-4", "overflow-x-scroll", "flex-wrap");
+                subsystem.appendChild(subsystemMotorCards);
+                let subsystemMotors = window.log.getStringArray(data[subsystemID]["children"]["motorNames"]["fullKey"], 0, Object.keys(data[subsystemID]["children"]["motorNames"]).length - 2);
+                for (const motor of subsystemMotors?.values[0] || []) {
+                    console.log(motor);
+                    let motorTree = data[subsystemID]["children"][motor]["children"];
+                    let motorCard = document.createElement("div");
+                    motorCard.classList.add("text-white", "w-72", "h-40", "rounded-lg", "border-2", "p-4");
+                    let motorStage = (window.log.getString(motorTree["CurrentLimitStage"]["fullKey"], 0, 255)?.values[0] ||
+                        "");
+                    let motorErrors = window.log.getStringArray(motorTree["Errors"]["fullKey"], 0, 255)?.values[0] || [];
+                    this.uiTree[motorTree["Errors"]["fullKey"]] = function (motorErrors) {
+                        if (motorErrors.length != 0) {
+                            motorCard.classList.remove("border-[#30363D]", "bg-[#0f1317]");
+                            motorCard.classList.add("border-[#c21919]", "bg-[#170f0f]");
+                        }
+                        else {
+                            motorCard.classList.remove("border-[#c21919]", "bg-[#170f0f]");
+                            motorCard.classList.add("border-[#30363D]", "bg-[#0f1317]");
+                        }
+                    };
+                    this.uiTree[motorTree["CurrentLimitStage"]["fullKey"]] = function (motorStage) {
+                        if (motorStage != "BASE") {
+                            motorCard.classList.remove("border-[#30363D]", "bg-[#0f1317]");
+                            motorCard.classList.add("border-[#c21919]", "bg-[#170f0f]");
+                        }
+                        else {
+                            motorCard.classList.remove("border-[#c21919]", "bg-[#170f0f]");
+                            motorCard.classList.add("border-[#30363D]", "bg-[#0f1317]");
+                        }
+                    };
+                    this.uiTree[motorTree["Errors"]["fullKey"]](motorErrors);
+                    this.uiTree[motorTree["CurrentLimitStage"]["fullKey"]](motorStage);
+                    subsystemMotorCards.appendChild(motorCard);
+                    let motorCardTitle = document.createElement("h1");
+                    motorCardTitle.classList.add("text-lg", "font-semibold", "mb-2");
+                    motorCardTitle.innerText = motor;
+                    motorCard.appendChild(motorCardTitle);
+                    let motorIDBox = document.createElement("span");
+                    motorIDBox.classList.add("ml-2", "rounded-md", "border-[#ffffff]", "border-2", "px-1");
+                    console.log(window.log.getNumber(motorTree["MotorID"]["fullKey"], 0, 2));
+                    motorIDBox.innerText = (window.log.getNumber(motorTree["MotorID"]["fullKey"], 0, 2)?.values[0] ||
+                        "4");
+                    motorCardTitle.appendChild(motorIDBox);
+                    let motorCardTemp = document.createElement("h1");
+                    let motorTemp = window.log
+                        .getNumber(motorTree["TemperatureCelsius"]["fullKey"], 0, 255)
+                        ?.values[0].toFixed(2);
+                    motorCardTemp.classList.add("text-md", "font-semibold", "mb-1");
+                    this.uiTree[motorTree["TemperatureCelsius"]["fullKey"]] = function (temperature) {
+                        motorCardTemp.innerText = "Temperature: " + temperature;
+                    };
+                    this.uiTree[motorTree["TemperatureCelsius"]["fullKey"]](motorTemp);
+                    motorCard.appendChild(motorCardTemp);
+                    let motorCardStator = document.createElement("h1");
+                    motorCardStator.classList.add("text-md", "font-semibold");
+                    this.uiTree[motorTree["StatorCurrentAmps"]["fullKey"]] = function (amps) {
+                        motorCardStator.innerText = "Stator: " + amps;
+                    };
+                    motorCard.appendChild(motorCardStator);
+                    this.uiTree[motorTree["StatorCurrentAmps"]["fullKey"]](window.log.getNumber(motorTree["StatorCurrentAmps"]["fullKey"], 0, 255)?.values[0].toFixed(2));
+                }
+                this.MOTOR_CONTAINER.appendChild(subsystem);
+                console.log(subsystem);
+            }
+        }
+        let showMotorChecker = Object.keys(data).length > 0;
+        this.MOTOR_CONTAINER.hidden = !showMotorChecker;
+        this.NO_DATA_ALERT.hidden = showMotorChecker;
     }
 }
 
@@ -50043,6 +50215,10 @@ class Tabs {
             case TabType$1.Metadata:
                 contentElement = this.CONTENT_TEMPLATES.children[13].cloneNode(true);
                 controller = new MetadataController(contentElement);
+                break;
+            case TabType$1.MotorChecker:
+                contentElement = this.CONTENT_TEMPLATES.children[14].cloneNode(true);
+                controller = new MotorCheckerController(contentElement);
                 break;
         }
         let titleElement = document.createElement("div");

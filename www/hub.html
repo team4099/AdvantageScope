@@ -2,17 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; connect-src ws: wss: file: blob:"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; connect-src ws: wss: file: blob:"
-    />
+    <meta http-equiv="Content-Security-Policy" content="connect-src ws: wss: file: blob:" />
+    <meta http-equiv="X-Content-Security-Policy" content="connect-src ws: wss: file: blob:" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="hub.css" />
+    <script src="tailwind.js"></script>
     <script type="module" src="../bundles/hub.js"></script>
     <title>AdvantageScope</title>
   </head>
@@ -709,6 +704,12 @@
                 </tbody>
               </table>
             </div>
+          </div>
+
+          <!-- MotorChecker -->
+          <div class="tab-content">
+            <div class="tab-prompt ml-2 text-lg font-semibold">No motorchecker instance found.</div>
+            <div class="motor-checker-table-container px-4 pt-4 flex flex-col gap-4 mb-4" hidden></div>
           </div>
         </span>
       </div>

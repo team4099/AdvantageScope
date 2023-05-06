@@ -10,6 +10,7 @@ import JoysticksController from "./tabControllers/JoysticksController";
 import LineGraphController from "./tabControllers/LineGraphController";
 import MechanismController from "./tabControllers/MechanismController";
 import MetadataController from "./tabControllers/MetadataController";
+import MotorCheckerController from "./tabControllers/MotorCheckerController";
 import OdometryController from "./tabControllers/OdometryController";
 import PointsController from "./tabControllers/PointsController";
 import StatisticsController from "./tabControllers/StatisticsController";
@@ -248,6 +249,11 @@ export default class Tabs {
       case TabType.Metadata:
         contentElement = this.CONTENT_TEMPLATES.children[13].cloneNode(true) as HTMLElement;
         controller = new MetadataController(contentElement);
+        break;
+
+      case TabType.MotorChecker:
+        contentElement = this.CONTENT_TEMPLATES.children[14].cloneNode(true) as HTMLElement;
+        controller = new MotorCheckerController(contentElement);
         break;
     }
 
